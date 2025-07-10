@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <title>Hire Me!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hire.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('index') }}#about">About Me</a></li>
+            <li><a href="{{ url_for('index') }}#pricing">Pricing</a></li>
+            <li><a href="{{ url_for('index') }}#projects">My Projects</a></li>
+            <li><a href="{{ url_for('index') }}#feedback">Feedback</a></li>
+            <button class="btn"><a href="{{ url_for('index') }}" class="btn-back">Wróć do strony głównej</a></button>
+        </ul>
+    </nav>
+
+    <div class="hire-container">
+        <h1>Skontaktuj się ze mną!</h1>
+        <p id="p">
+            Chętnie pomogę Ci z Twoim projektem. Opisz swoje potrzeby, a ja postaram się przygotować dla Ciebie najlepszą ofertę.
+        </p>
+        <p id="pp">
+            Niezależnie od tego, czy potrzebujesz prostej <span id="easy">strony wizytówki</span>, <span id="advanced">rozbudowanej aplikacji webowej</span>, czy pomocy z <span id="medium">kodem Pythona</span>, jestem tu, aby Cię wesprzeć.
+        </p>
+        <div class="contact-info">
+            <p class="contacting">Możesz do mnie napisać na:</p>
+            <div class="contact-card">
+                <a class="mail" href="mailto:grzegorzgladysz2204@gmail.com">Mój E-mail</a>
+                <a class="email-icon" href="https://mail.google.com" target="_blank"><i class="ri-mail-line"></i></a>
+            </div>
+            <div class="contact-card">
+                <a class="gitprof" href="https://github.com/Grzegorz-coder-rgb" target="_blank">Mój GitHub</a>
+                <a class="github" href="https://github.com/Grzegorz-coder-rgb" target="_blank"><i class="ri-github-line"></i></a>
+            </div>
+        </div>
+    </div>
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-github-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>Projects</h4>
+            <a href="#">HTML</a>
+            <a href="#">CSS & JS</a>
+            <a href="#">Python</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 GregProg Channel. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>

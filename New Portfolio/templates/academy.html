@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna - GregAcademy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f0f1a;
+            color: #f0f0f0;
+            text-align: center;
+            flex-direction: column;
+        }
+        .main-content {
+            padding: 3rem;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .main-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #007bff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .main-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .main-content .btn-group a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #f0f0f0;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            background-color: #8a2be2;
+            color: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+        }
+        .btn:hover {
+            background-color: #7b24cc;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .flashes {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .flashes li {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .flashes li.error { color: #dc3545; border: 1px solid #dc3545; background-color: rgba(220, 53, 69, 0.2); }
+        .flashes li.success { color: #28a745; border: 1px solid #28a745; background-color: rgba(40, 167, 69, 0.2); }
+        .flashes li.warning { color: #ffc107; border: 1px solid #ffc107; background-color: rgba(255, 193, 7, 0.2); }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <h1>Witaj w GregAcademy!</h1>
+        <p>Twoja platforma do nauki programowania.</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <div class="btn-group">
+            <a href="{{ url_for('login') }}" class="btn">Learning Platform</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+/* Specific styles for plan.html */
+
+#pricing-full {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.offers-full {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.offers-full .card {
+  margin: 0 auto;
+  padding: 2em;
+  width: 300px;
+  height: 650px; /* Ustalona wysokość */
+  background: #1c1f2b;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offers-full .card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.offers-full .card::after, .card::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.offers-full .card::after, .offers-full .card::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.offers-full .card::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+.offers-full .card h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #5e3bee;
+}
+
+.offers-full .card h4 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #00ff99;
+}
+
+.offers-full .card p {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+    width: 100%;
+}
+
+.offers-full .card p i {
+    font-size: 1.2rem;
+    color: #00ff99; /* Icon color for available features */
+}
+
+.offers-full .card p i.ri-close-circle-line {
+    color: #ff4545; /* Icon color for unavailable features */
+}
+
+.offers-full .card .btn {
+    margin-top: auto; /* Pushes the button to the bottom of the card */
+    width: 80%;
+    padding: 0.8rem 1.5rem;
+}
+
+/* Media Queries for plan.html */
+@media (max-width: 1024px) {
+    .offers-full .card {
+        width: 45%; /* Two cards per row */
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .offers-full {
+        flex-direction: column; /* Cards in a column */
+        align-items: center;
+    }
+
+    .offers-full .card {
+        width: 90%;
+        max-width: 400px;
+        min-height: 380px;
+    }
+
+    .offers-full .card h3 {
+        font-size: 1.8rem;
+    }
+
+    .offers-full .card h4 {
+        font-size: 2.2rem;
+    }
+
+    .offers-full .card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #pricing-full {
+        padding: 3rem 1rem;
+    }
+
+    .offers-full .card {
+        width: 95%;
+        min-height: 350px;
+        padding: 1.5em;
+    }
+
+    .offers-full .card h3 {
+        font-size: 1.5rem;
+    }
+
+    .offers-full .card h4 {
+        font-size: 1.8rem;
+    }
+
+    .offers-full .card p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Media Queries for plan.html */
+
+/* Tablety i małe laptopy (do 1024px) */
+@media (max-width: 1024px) {
+    .offers-full .card {
+        width: 45%; /* Dwa kafelki w rzędzie */
+        min-height: 400px;
+    }
+}
+
+/* Smartfony w orientacji pionowej i małe tablety (do 768px) */
+@media (max-width: 768px) {
+    .offers-full {
+        flex-direction: column; /* Kafelki ułożone pionowo */
+        align-items: center;
+        gap: 2rem; /* Zachowaj odstęp między kartami */
+    }
+
+    .offers-full .card {
+        width: 90%;
+        max-width: 400px;
+        min-height: 380px;
+        margin: 0 auto;
+    }
+
+    .offers-full .card h3 {
+        font-size: 1.8rem;
+    }
+
+    .offers-full .card h4 {
+        font-size: 2.2rem;
+    }
+
+    .offers-full .card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Małe smartfony (do 480px) */
+@media (max-width: 480px) {
+    #pricing-full {
+        padding: 3rem 1rem;
+    }
+
+    .offers-full .card {
+        width: 95%;
+        min-height: 350px;
+        padding: 1.5em;
+    }
+
+    .offers-full .card h3 {
+        font-size: 1.5rem;
+    }
+
+    .offers-full .card h4 {
+        font-size: 1.8rem;
+    }
+
+    .offers-full .card p {
+        font-size: 0.85rem;
+    }
+}
+
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}

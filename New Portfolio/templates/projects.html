@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <title>My Projects</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('index') }}#about">About Me</a></li>
+            <li><a href="{{ url_for('plan') }}">Pricing</a></li>
+            <li><a href="{{ url_for('projects') }}">My Projects</a></li>
+            <li><a href="{{ url_for('index') }}#feedback">Feedback</a></li>
+            <button class="btn" onclick="window.location.href='hire.html';">Hire Me!</button>
+        </ul>
+    </nav>
+
+    <div class="projects-full" id="projects-section">
+        <h1 class="header">My Projects</h1>
+        <h2 class="card-1">You can buy my projects or commission a new one!</h2>
+                
+        <div class="project-grid-full"> 
+            <div class="project-item"> 
+                <h3>Python Game in Pgzrun</h3> 
+                <h4>$1</h4> 
+                <p>It's an <span>Ultimate</span> game called "Three Games" 
+                   in which you can select and change your game. You have a <span class="pgz">Shooter</span>, 
+                   <span class="pgz">Runner</span>, and <span class="pgz">Clicker</span>. Each game offers unique challenges and hours of entertainment.
+                </p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button> 
+            </div>
+
+            <div class="project-item"> 
+                <h3>Pong Game</h3>
+                <h4>$1</h4>
+                <p>A classic Pong game where you must bounce the ball and play against an advanced AI. Perfect for quick matches!</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button>
+            </div>
+
+            <div class="project-item"> 
+                <h3>XO-game (Tic-Tac-Toe)</h3>
+                <h4>$1</h4>
+                <p>A simple Tic-Tac-Toe game. You can play it with your friend on the same computer and have fun.</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button>
+            </div>
+
+            <div class="project-item"> 
+                <h3>Weather App</h3>
+                <h4>$2</h4>
+                <p>It's an app where you can check the current weather in your location or any city worldwide. Simple and intuitive to use.</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button>
+            </div>
+
+            <div class="project-item">
+                <h3>To-Do List App</h3>
+                <h4>$1.5</h4>
+                <p>A simple yet effective to-do list application to help you keep track of your daily tasks and be more productive.</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button>
+            </div>
+
+            <div class="project-item">
+                <h3>Basic Calculator</h3>
+                <h4>$0.5</h4>
+                <p>A functional calculator for basic arithmetic operations, built with Python. Ideal for quick calculations.</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button>
+            </div>
+
+            <div class="project-item">
+                <h3>E-commerce Product Page</h3>
+                <h4>$3</h4>
+                <p>A responsive e-commerce product page template, created using HTML, CSS, and JavaScript. Ready for quick deployment.</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button>
+            </div>
+
+            <div class="project-item">
+                <h3>Landing Page Template</h3>
+                <h4>$2.5</h4>
+                <p>A modern and clean landing page template suitable for various businesses and marketing campaigns. Easy to customize.</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Buy Now</button>
+            </div>
+        </div>
+        <div class="more-projects-info">
+            <h3>Looking for something else?</h3>
+            <p>If you haven't found the project you're looking for, or you have custom requirements, feel free to contact me. I'll create a personalized solution for you!</p>
+            <button class="btn" onclick="window.location.href='hire.html';">Create Your Custom Project</button>
+        </div>
+    </div>
+
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            </div>
+            <p>
+                Let's build something great together! Contact me to discuss your next project.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://github.com/Grzegorz-coder-rgb" target="_blank"><i class="ri-github-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>Projects</h4>
+            <a href="#">HTML</a>
+            <a href="#">CSS & JS</a>
+            <a href="#">Python</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="{{ url_for('hire') }}">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 GregProg Channel. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>

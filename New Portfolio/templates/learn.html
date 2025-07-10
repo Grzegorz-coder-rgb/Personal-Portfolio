@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <title>{{ active_course.name if active_course else 'Moje Kursy' }} - GregAcademy</title> <link rel="stylesheet" href="{{ url_for('static', filename='css/learn.css') }}">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('index') }}#about">About Me</a></li>
+            <li><a href="{{ url_for('index') }}#pricing">Pricing</a></li>
+            <li><a href="{{ url_for('index') }}#courses">Courses</a></li>
+            <li><a href="{{ url_for('index') }}#projects">My Projects</a></li>
+            <li><a href="{{ url_for('index') }}#feedback">Feedback</a></li>
+            {% if session.get('user_id') %}
+                <li><a href="{{ url_for('logout') }}">Wyloguj ({{ session.get('username') }})</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Logowanie</a></li>
+                {% endif %}
+            <button class="btn" onclick="window.location.href='{{ url_for('hire') }}';">Hire Me!</button>
+        </ul>
+    </nav>
+
+    <main class="main-layout-container">
+        <aside class="side-panel glass-card">
+            <div class="logo-and-balance">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="GregAcademy Logo"> </div>
+                <div class="user-balance">
+                    <span>Saldo</span>
+                    <p>{{ lessons_balance }} lekcji</p>
+                </div>
+            </div>
+
+            <div class="side-nav-items">
+                <a href="#" class="side-nav-item active"><i class="ri-home-4-line"></i> Strona główna</a>
+                <a href="#" class="side-nav-item my-courses-toggle"><i class="ri-book-open-line"></i> Moje kursy <i class="ri-arrow-down-s-line arrow-icon"></i></a>
+                <div class="my-courses-dropdown">
+                    {% for course in user_courses %}
+                        <a href="{{ url_for('learn', course_id=course.id) }}" class="course-item {% if active_course and active_course.id == course.id %}active{% endif %}">
+                            {{ course.name }}
+                        </a>
+                    {% endfor %}
+                </div>
+                <a href="#" class="side-nav-item"><i class="ri-dashboard-line"></i> HUB</a>
+                <a href="#" class="side-nav-item"><i class="ri-award-line"></i> Moje osiągnięcia</a>
+                <a href="#" class="side-nav-item"><i class="ri-settings-line"></i> Ustawienia</a>
+            </div>
+
+            <div class="whatsapp-card">
+                <i class="ri-whatsapp-fill whatsapp-icon"></i>
+                <p>Czat grupowy kursu</p>
+                <span>Tutaj możesz ze mną rozmawiać!</span>
+                <button class="btn whatsapp-btn">Przejdź do</button>
+            </div>
+        </aside>
+
+        <section class="course-content-area">
+            {% if active_course %}
+                <section class="course-hero-section glass-card {{ active_course.gradient_class }}">
+                    <div class="course-tabs">
+                        <span class="active-tab">AKTYWNE</span>
+                        <span class="lesson-count">
+                            {{ active_course.progress_lessons_completed }}/{{ active_course.progress_total_lessons }}
+                        </span>
+                        <select class="language-selector">
+                            <option value="pl">PL</option>
+                            <option value="en">EN</option>
+                        </select>
+                        <div class="header-icons">
+                            <i class="ri-information-fill"></i>
+                            <i class="ri-message-3-fill"></i>
+                            <i class="ri-user-settings-fill"></i>
+                        </div>
+                    </div>
+                    <h1 class="course-main-title">{{ active_course.name }}</h1>
+                    <p class="course-completion-status">
+                        Ukończono {{ active_course.progress_lessons_completed }} z {{ active_course.progress_total_lessons }} lekcji
+                    </p>
+                    <div class="completion-bar-wrapper">
+                        <div class="completion-bar" style="width: {{ active_course.progress_percent }}%;"></div>
+                    </div>
+                </section>
+
+                <section class="modules-section">
+                    <div class="module-navigation">
+                        {% for tab in active_course.tabs %}
+                            <button class="nav-button {% if loop.first %}active{% endif %}">{{ tab }}</button>
+                        {% endfor %}
+                    </div>
+
+                    <div class="modules-grid">
+                        {% for module in active_course.modules %}
+                            <div class="module-card glass-card {{ module.gradient_class }}">
+                                <div class="module-status {{ module.status }}">
+                                    {% if module.status == 'completed' %}
+                                        <i class="ri-check-line"></i><span>Ukończone</span>
+                                    {% elif module.status == 'in_progress' %}
+                                        <i class="ri-loader-4-line"></i><span>W Trakcie</span>
+                                    {% else %}
+                                        <i class="ri-play-circle-line"></i><span>Nie Rozpoczęto</span>
+                                    {% endif %}
+                                </div>
+                                <h3>{{ module.title }}</h3>
+                                <p>Ukończono {{ module.lessons_completed }} z {{ module.total_lessons }} lekcji</p>
+                                <div class="module-completion-bar-wrapper">
+                                    <div class="module-completion-bar" style="width: {{ (module.lessons_completed / module.total_lessons * 100) | int }}%;"></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% else %}
+                <p class="no-courses-message glass-card">Brak dostępnych kursów. Zapisz się na nowy kurs!</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="container">
+        <div class="column">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo GregAcademy"> </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-github-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>Projects</h4>
+            <a href="#">HTML</a>
+            <a href="#">CSS & JS</a>
+            <a href="#">Python</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 GregProg Channel. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const myCoursesToggle = document.querySelector('.my-courses-toggle');
+            const myCoursesDropdown = document.querySelector('.my-courses-dropdown');
+            if (myCoursesToggle && myCoursesDropdown) {
+                myCoursesToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    myCoursesDropdown.classList.toggle('active');
+                    myCoursesToggle.querySelector('.arrow-icon').classList.toggle('rotated');
+                });
+            }
+
+            const navButtons = document.querySelectorAll('.module-navigation .nav-button');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <title>Our Pricing Plans</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <link rel="stylesheet" href="{{ url_for('static', filename='css/plan.css') }}"> </head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('index') }}#about">About Me</a></li>
+            <li><a href="{{ url_for('plan') }}">Pricing</a></li>
+            <li><a href="{{ url_for('projects') }}">My Projects</a></li>
+            <li><a href="{{ url_for('index') }}#feedback">Feedback</a></li>
+            <button class="btn" onclick="window.location.href='hire.html';">Hire Me!</button>
+        </ul>
+    </nav>
+
+    <article id="pricing-full">
+        <h2 class="header">Detailed Project Pricing Plans</h2>
+        <p class="sub-header">
+            Our pricing plans come with various membership tiers,
+            each tailored to cater to different projects and
+            code types. Choose the plan that best suits your needs.
+        </p>
+        <div class="offers-full">
+            <div class="card">
+                <h3>Free Plan</h3>
+                <h4>$0</h4>
+                <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
+                <p><i class="ri-checkbox-circle-line"></i> At-home Workouts</p>
+                <p><i class="ri-close-circle-line"></i> No 1-on-1 Support</p>
+                <p><i class="ri-close-circle-line"></i> Limited Resources</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Join Now</button>
+            </div>
+
+            <div class="card">
+                <h3>Gold Plan</h3>
+                <h4>$30</h4>
+                <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
+                <p><i class="ri-checkbox-circle-line"></i> At-home Workouts</p>
+                <p><i class="ri-checkbox-circle-line"></i> Access to Pro Codes</p>
+                <p><i class="ri-checkbox-circle-line"></i> Basic Email Support</p>
+                <p><i class="ri-close-circle-line"></i> No Personalized Projects</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Join Now</button>
+            </div>
+
+            <div class="card">
+                <h3>Diamond Plan</h3>
+                <h4>$100</h4>
+                <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
+                <p><i class="ri-checkbox-circle-line"></i> At-home Workouts</p>
+                <p><i class="ri-checkbox-circle-line"></i> Access to Pro Codes</p>
+                <p><i class="ri-checkbox-circle-line"></i> Your Own Personalized Projects</p>
+                <p><i class="ri-checkbox-circle-line"></i> Professional Coaching & Guidance</p>
+                <p><i class="ri-checkbox-circle-line"></i> Priority 24/7 Support</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Join Now</button>
+            </div>
+
+            <div class="card">
+                <h3>Platinum Plan</h3>
+                <h4>Custom Quote</h4>
+                <p><i class="ri-checkbox-circle-line"></i> All Diamond Plan Benefits</p>
+                <p><i class="ri-checkbox-circle-line"></i> Dedicated Development Team</p>
+                <p><i class="ri-checkbox-circle-line"></i> Ongoing Collaboration & Evolution</p>
+                <p><i class="ri-checkbox-circle-line"></i> Extended Post-Launch Support</p>
+                <p><i class="ri-checkbox-circle-line"></i> Training for Your Team</p>
+                <button class="btn" onclick="window.location.href='hire.html';">Request a Quote</button>
+            </div>
+        </div>
+    </article>
+
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            </div>
+            <p>
+                Let's build something great together! Contact me to discuss your next project.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://github.com/Grzegorz-coder-rgb" target="_blank"><i class="ri-github-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>Projects</h4>
+            <a href="#">HTML</a>
+            <a href="#">CSS & JS</a>
+            <a href="#">Python</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="{{ url_for('hire') }}">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 GregProg Channel. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>

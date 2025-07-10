@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <title>Frontend Developer - Szczegóły Kursu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/course-details-common.css') }}">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}#main">Home</a></li>
+            <li><a href="{{ url_for('index') }}#about">About Me</a></li>
+            <li><a href="{{ url_for('index') }}#pricing">Pricing</a></li>
+            <li><a href="{{ url_for('index') }}#courses">Courses</a></li>
+            <li><a href="{{ url_for('index') }}#projects">My Projects</a></li>
+            <li><a href="{{ url_for('index') }}#feedback">Feedback</a></li>
+            <button class="btn" onclick="window.location.href='{{ url_for('hire') }}';">Hire Me!</button>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h2 class="section-header text-center">Frontend Developer</h2>
+
+        <div class="course-detail-page-wrapper glass-card course-gradient-frontend">
+            <div class="course-main-info">
+                <h3 class="course-title">Frontend Developer</h3>
+                <p class="course-description">
+                    Zanurz się w świat tworzenia interaktywnych i estetycznych interfejsów użytkownika. Naucz się budować responsywne strony, które zachwycą każdego użytkownika. Od podstaw HTML/CSS/JS po zaawansowane frameworki, poznasz wszystko, co jest potrzebne do tworzenia nowoczesnego i dynamicznego frontendu.
+                </p>
+                
+                <div class="course-price-area">
+                    <span class="price">2500zł</span>
+                    <a href="#contact" class="btn enroll-btn"><i class="ri-arrow-right-line"></i> Zapisz się na kurs</a>
+                </div>
+
+                <div class="technologies-used">
+                    <h4>Wykorzystywane technologie:</h4>
+                    <div class="tech-tags-grid">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">GitHub</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-program-info">
+                <h3>Program Kursu:</h3>
+                <ul class="program-list">
+                    <li>Wprowadzenie do Web Developmentu: jak działa internet, przeglądarki</li>
+                    <li>Podstawy HTML5: struktura dokumentu, tagi semantyczne, formularze, multimedia</li>
+                    <li>CSS3: selektory, model pudełkowy, pozycjonowanie, Flexbox, Grid, podstawy animacji i transformacji</li>
+                    <li>Responsywny Web Design (RWD) i media queries: tworzenie stron na różne urządzenia</li>
+                    <li>Zasady projektowania UI/UX: użyteczność, estetyka, wireframing, prototypowanie</li>
+                    <li>JavaScript (ES6+): zmienne, typy danych, funkcje, obiekty, tablice, operatory, DOM manipulation, Event Handling</li>
+                    <li>Asynchroniczny JavaScript: Promises, async/await, Fetch API (praca z zewnętrznymi API)</li>
+                    <li>Wprowadzenie do React.js: komponenty funkcyjne i klasowe, JSX, zarządzanie stanem (useState, useEffect)</li>
+                    <li>Routing w React (React Router): nawigacja po aplikacji jednostronicowej</li>
+                    <li>Zarządzanie stanem globalnym (Context API, podstawy Redux)</li>
+                    <li>Narzędzia deweloperskie przeglądarek: inspekcja elementów, debugowanie JS, analiza wydajności</li>
+                    <li>Optymalizacja wydajności strony (Web Performance): lazy loading, minifikacja, kompresja</li>
+                    <li>Wstęp do SEO dla Frontendowców: podstawowe zasady optymalizacji pod wyszukiwarki</li>
+                    <li>Systemy kontroli wersji (Git, GitHub): współpraca w projekcie, branchowanie, commity</li>
+                    <li>Projekty praktyczne: budowa kilku stron i aplikacji od podstaw.</li>
+                </ul>
+            </div>
+
+            <div class="course-target-learn">
+                <h3>Dla Kogo Jest Ten Kurs:</h3>
+                <p>
+                    Ten kurs jest idealny dla każdego, kto chce rozpocząć karierę w web designie i programowaniu Frontend. Nie wymaga wcześniejszego doświadczenia, a program został zaprojektowany tak, aby przeprowadzić Cię od absolutnych podstaw do zaawansowanych technik budowania nowoczesnych interfejsów użytkownika.
+                </p>
+
+                <h3>Czego Nauczysz Się na Kursie:</h3>
+                <ul class="learn-list">
+                    <li>Tworzyć estetyczne i responsywne strony internetowe od zera.</li>
+                    <li>Programować dynamiczne i interaktywne elementy stron za pomocą JavaScript.</li>
+                    <li>Budować zaawansowane aplikacje jednostronicowe przy użyciu React.js.</li>
+                    <li>Zrozumieć zasady User Interface (UI) i User Experience (UX).</li>
+                    <li>Wykorzystywać Git i GitHub do zarządzania kodem i współpracy.</li>
+                    <li>Optymalizować wydajność i dostępność tworzonych stron.</li>
+                </ul>
+
+                <h3>Wykorzystywane technologie:</h3>
+                <div class="technologies-grid">
+                    <div class="technology-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                    <div class="technology-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                    <div class="technology-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                    <div class="technology-item"><i class="devicon-react-original colored"></i><span>React</span></div>
+                    <div class="technology-item"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
+                    <div class="technology-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="technology-item"><i class="devicon-github-original colored"></i><span>GitHub</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="call-to-action text-center">
+            <p>Zacznij tworzyć piękne i funkcjonalne strony internetowe już teraz!</p>
+            <a href="#contact" class="btn enroll-btn">Zapisz się teraz!</a>
+        </div>
+    </main>
+
+    <footer class="container">
+        <div class="column">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo firmy">
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-github-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>Projects</h4>
+            <a href="#">HTML</a>
+            <a href="#">CSS & JS</a>
+            <a href="#">Python</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 GregProg Channel. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

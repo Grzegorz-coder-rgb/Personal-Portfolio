@@ -1,0 +1,1088 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  "Roboto", sans-serif; /* Jeśli Poppins ma być domyślny, zmień na "Poppins" */
+}
+
+img {
+    max-width: 100%; /* Zapewnia, że obraz nie będzie szerszy niż jego kontener */
+    height: auto;   /* Utrzymuje proporcje obrazu */
+    display: block; /* Usuwa ewentualne dodatkowe miejsce pod obrazem */
+}
+li{
+    list-style-type: none;
+}
+
+body{
+    background: #000;
+    color: #fff;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+a:hover{
+    animation: fadeIn 0.3s forwards;
+    color: #5e3bee;
+    font-size: 2.3rem;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  font-weight: 700;
+  background: #1c1f2b;
+  text-align: center;
+}
+
+nav ul li a{
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #fff !important;
+}
+
+nav ul li a:hover{
+  color: #5e3bee;
+  font-size: 1.4rem !important;
+}
+
+nav ul li a::after{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #5e3bee;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover::after{
+    /* Używasz animacji fadeIn zdefiniowanej na końcu, więc to jest poprawne, jeśli taka jest intencja */
+    animation: 0.3s fadeIn forwards;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+}
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 2rem;
+}
+
+.btn{
+    font-size: 1rem;
+    color: #ccc;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    background-color: #0044ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding: 1.5rem 2rem;
+}
+
+.blur{
+    position: absolute;
+    box-shadow: 0 0 1000px 50px #1d4ed8;
+    z-index: -2; /* Upewnienie się, że jest pod spodem */
+}
+
+header{
+    position: relative;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+header .image img{
+    max-width: 600px;
+    margin: auto;
+}
+
+#about p{
+    font-size: 1.5rem;
+    width: 500px;
+}
+
+.card-1{
+    margin: 100px auto;
+    padding: 2em;
+    width: 600px;
+    min-height: 300px;
+    background: #1c1f2b;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    padding: 30px 50px; /* Ten padding nadpisuje poprzedni 'padding: 2em;' */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-1::after, .card-1::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px; /* Ten padding tworzy iluzję grubości ramki, jeśli tło elementu jest przezroczyste lub inne */
+  border-radius: 10px;
+  animation: spin 1s linear infinite; /* ***POPRAWKA: Dodano animację*** */
+}
+
+.card-1::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.card-1 h1{
+    position: absolute;
+    top: -60px;
+    font-size: 3rem;
+}
+
+.card-1 h1::after{
+    content: "";
+    position: absolute;
+    top: 10%; 
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: #4d2add;
+    transition: all 0.3s ease
+}
+
+.card-1 h1:hover::after{
+    animation: 0.3s fadeIn forwards;
+}
+
+.card-1 h1:hover{
+    background-color: #5e3bee;
+    border-radius: 10px;
+    font-size: 3.5rem;
+    border: 2px solid #fff;
+    margin-top: -2rem;
+}
+
+.card-1 .btn{
+    margin-top: 2rem
+}
+
+.offers{
+    width: 1200px;
+    height: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem
+}
+
+.card h3,
+.card h4{
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.card h4{
+    padding-bottom: 3rem;
+}
+
+.card .btn {
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: 0; /* lub np. 1rem dla estetyki */
+  top: unset;
+  position: relative;
+}
+
+.card {
+  margin: 0 auto;
+  padding: 2em;
+  width: 300px;
+  height: 400px; /* Ustalona wysokość */
+  background: #1c1f2b;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.card::after, .card::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+
+.card::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.header{
+    text-align: center;
+    font-size: 3rem;
+    padding-top: 10rem;
+}
+
+.sub-header {
+    margin: 50px -110px;
+    padding: 2em;
+    width: 600px;
+    min-height: 300px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #1c1f2b;
+    border-radius: 10px;
+    position: relative;
+    left: 40%;
+}
+
+.sub-header::after, .sub-header::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 10px; /* Ten padding tworzy iluzję grubości ramki */
+  border-radius: 10px;
+  animation: spin 1s linear infinite; /* ***POPRAWKA: Dodano animację*** */
+}
+.sub-header::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.projects {
+    margin: 3rem auto;
+    padding: 2rem;
+    position: relative;
+    border-radius: 10px;
+    height: 1100px; 
+    max-width: 1200px;
+    background-color: #1a1f2b;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-around; 
+    align-items: center; 
+    gap: 2rem;
+}
+
+.projects::before, .projects::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 7px;
+    border-radius: 10px;
+    animation: spin 2s linear infinite;
+}
+
+.projects::before{
+  filter: blur(8rem);
+  opacity: 1;
+}
+
+.projects .project-grid .projects-top,
+.projects .project-grid .projects-bottom {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if space is insufficient */
+    justify-content: center; /* Center the items within each row */
+    gap: 2rem; /* Space between individual project items */
+    flex-grow: 1;
+    margin-bottom: 2rem;
+}
+
+.projects .project-grid .project-item { /* Changed from projects-item to project-item to match HTML */
+    width: 250px; /* Increased width for better content display */
+    height: 400px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+    position: relative;
+    padding: 1.5rem; /* Add padding inside the project item */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content vertically */
+    align-items: flex-start; /* Align content to the start */
+    text-align: left; /* Align text to the left */
+}
+
+.projects .project-grid h3{
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem; /* Space between title and description */
+    background-color: #1c1f2b;
+    width: 200px;
+    height: 100px;
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.projects .project-grid h4{
+    font-size: 2rem;
+    margin-bottom: 0.5rem; /* Space between title and description */
+    color: #5e3bee;
+    width: 200px;
+    height: 100px;
+    padding: 1rem;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.projects .project-grid button{
+    position: relative;
+    left: 20%;
+}
+
+.feedback{
+    padding: 110px 85px;
+}
+
+.feedback .review{
+  font-size: 3rem;
+  background-color: #1c1f2b;
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 100%;
+  border-radius: 10px;
+  position: relative;
+  font-weight: 900;
+}
+
+.feedback .review::after, .feedback .review::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 7px; /* Ten padding tworzy iluzję grubości ramki */
+  border-radius: 10px;
+  animation: spin 2s linear infinite; /* ***POPRAWKA: Dodano animację*** */
+}
+
+.feedback .customers-feedback{
+    font-size: 2rem;
+    font-weight: 600;
+    background-color: #1c1f2b;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0 1rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.feedback .customers-feedback::before, .feedback .customers-feedback::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 7px; /* Ten padding tworzy iluzję grubości ramki */
+  border-radius: 10px;
+  animation: spin 2s linear infinite; /* ***POPRAWKA: Dodano animację*** */
+}
+
+.feedback .customers-feedback::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+
+.feedback .review::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+.feedback .customers{
+    margin-top: 5rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.feedback .customers .item{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px solid #5e3bee;
+    border-radius: 10px;
+    padding: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback .customers .item .rating{
+    color: #1eff00;
+    font-size: 2rem;
+}
+
+.feedback .customers .item:hover{
+    border-color: #5e3bee;
+}
+
+.feedback .customers .item p{
+    line-height: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.feedback .customers .item .user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feedback .customers .item .user img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.feedback .customers .item .user h5{
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.feedback .customers .item .user p{
+    font-size: 12px;
+}
+
+.feedback .customers .item #p2{
+    font-size: 5px !important;
+}
+
+.container {
+  padding: 5rem;
+  background-color: #1a1f2b;
+  margin: 0 auto;
+  max-width: 1200px; /* Rozważ użycie max-width dla lepszej responsywności */
+  display: flex;
+  gap: 2rem; /* Dodaje odstęp między kolumnami */
+  flex-wrap: wrap; /* Pozwala kolumnom zawijać się na mniejszych ekranach */
+  position: relative;
+}
+
+.container::after, .container::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 10px; /* Ten padding tworzy iluzję grubości ramki, jeśli tło elementu jest przezroczyste lub inne */
+  border-radius: 10px;
+  animation: spin 1s linear infinite; /* ***POPRAWKA: Dodano animację*** */
+}
+
+.container::before{
+  filter: blur(8rem);
+  opacity: 1;
+}
+
+.container .column {
+  flex-grow: 1; 
+  flex-basis: 200px; 
+ 
+}
+
+.container .column h4 {
+  margin-bottom: 1rem; /* Odstęp pod nagłówkiem H4 */
+}
+
+.container .column h4{
+  cursor: pointer;
+}
+
+
+.container .column > a { 
+  display: block;
+  margin-bottom: 0.5rem; /* Odstęp między linkami w kolumnie */
+}
+
+.container .column > a:hover{
+  font-size: 1.5rem !important;
+}
+
+.container .column .socials{
+  font-size: 2rem;
+}
+
+footer .copyright{
+  position: absolute;
+  left: 34%;
+  top: 20rem;
+}
+
+footer .copyright:hover{
+  cursor: pointer;
+  color: #5e3bee;
+  background-color: #000;
+}
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+@keyframes fadeIn{
+  from{
+    width: 20%;
+  }
+
+  to{
+    width: 75%;
+  }
+}
+
+/* === MEDIA QUERIES (RESPONSYWNOŚĆ) - POPRAWIONA WERSJA === */
+
+/* Dla dużych ekranów nie ma zmian, bazujemy na kodzie podstawowym. */
+
+/* === EKRANY PONIŻEJ 1200px (np. mniejsze laptopy) === */
+@media (max-width: 1200px) {
+    /* Zmniejszamy szerokość głównych kontenerów, aby nie wychodziły poza ekran */
+    .container,
+    .offers,
+    .projects,
+    footer .container {
+        max-width: 95%; /* Używamy procentów zamiast stałej wartości px */
+        width: 100%;
+    }
+
+    .sub-header {
+        /* Poprawka krytycznego błędu pozycjonowania */
+        left: 50%;
+        transform: translateX(-50%); /* Lepszy sposób na centrowanie niż 'left: 40%' */
+        margin: 50px 0; /* Usuwamy negatywny margines */
+        width: 90%;
+        max-width: 600px;
+    }
+
+    footer .copyright {
+        /* Poprawka pozycjonowania stopki */
+        position: relative; /* Zmiana z absolute na relative, aby element był w przepływie dokumentu */
+        left: auto;
+        top: auto;
+        text-align: center;
+        margin-top: 2rem; /* Dodajemy margines, aby oddzielić od reszty stopki */
+        width: 100%;
+    }
+}
+
+
+/* === EKRANY PONIŻEJ 1024px (Tablety w orientacji poziomej) === */
+@media (max-width: 1024px) {
+    .container {
+        padding: 4rem 2rem; /* Mniejszy padding na tabletach */
+    }
+
+    header {
+        grid-template-columns: 1fr; /* Zmiana na jedną kolumnę */
+        text-align: center;
+        gap: 1rem;
+    }
+
+    header .content {
+        order: 2; /* Tekst pod obrazkiem */
+    }
+
+    header .image {
+        order: 1; /* Obrazek nad tekstem */
+        margin: 0 auto 2rem auto;
+    }
+
+    #about p {
+        width: 100%; /* Pełna szerokość w kontenerze */
+        max-width: 600px; /* Ograniczenie dla czytelności */
+        margin: 0 auto;
+        font-size: 1.3rem;
+    }
+
+    .card-1 {
+        width: 90%;
+        max-width: 550px;
+    }
+
+    .card-1 h1 {
+        font-size: 2.5rem;
+    }
+
+    .offers {
+        flex-direction: column; /* Oferty jedna pod drugą */
+        height: auto; /* Wysokość dopasowuje się do zawartości */
+        gap: 3rem;
+    }
+    
+    .card {
+        width: 80%;
+        max-width: 400px;
+        min-height: auto; /* Pozwalamy kartom mieć różną wysokość w razie potrzeby */
+    }
+
+    .projects {
+        height: auto; /* Najważniejsza poprawka - wysokość musi być automatyczna */
+        padding: 2rem 1rem;
+    }
+
+    /* Zapewniamy, że rzędy w siatce projektów mogą istnieć samodzielnie */
+    .projects .project-grid .projects-top,
+    .projects .project-grid .projects-bottom {
+        margin-bottom: 0;
+    }
+
+    .feedback {
+        padding: 4rem 2rem;
+    }
+
+    .feedback .customers {
+        flex-direction: column; /* Opinie jedna pod drugą */
+        align-items: center; /* Wyśrodkowanie opinii */
+    }
+
+    .feedback .customers .item {
+        width: 100%;
+        max-width: 500px; /* Ograniczenie szerokości opinii */
+    }
+
+    footer .container {
+        flex-direction: column; /* Kolumny w stopce jedna pod drugą */
+        text-align: center;
+        gap: 2rem;
+    }
+}
+
+
+/* === EKRANY PONIŻEJ 768px (Tablety w orientacji pionowej) === */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Nawigacja w kolumnie */
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .container {
+        padding: 3rem 1.5rem;
+    }
+
+    a:hover {
+        /* Wyłączamy powiększanie fontu przy hover na urządzeniach dotykowych, bo nie ma "hover" */
+        font-size: inherit; /* Używa rozmiaru zadeklarowanego dla 'a' */
+        color: #5e3bee; /* Zachowujemy zmianę koloru */
+    }
+
+    nav ul li a:hover {
+        font-size: 1.4rem !important; /* Tutaj możemy zostawić dla spójności, ale efekt będzie widoczny głównie na desktopie */
+    }
+
+    .card-1 h1 {
+        position: static; /* Usuwamy pozycjonowanie absolutne, które sprawia problemy */
+        margin-bottom: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .card-1 h1:hover {
+        margin-top: 0; /* Resetujemy margines z hover */
+        font-size: 2.3rem;
+    }
+    
+    .card h3,
+    .card h4 {
+        font-size: 1.8rem;
+    }
+
+    .header { /* Klasa .header (np. dla "Projects") */
+        font-size: 2.5rem;
+        padding-top: 6rem;
+    }
+
+    .sub-header {
+        font-size: 1.2rem;
+    }
+    
+    .projects .project-grid .project-item {
+        width: 70%; /* Projekty zajmują więcej szerokości */
+        max-width: 350px;
+    }
+    
+    .projects .project-grid button {
+        left: 50%;
+        transform: translateX(-50%); /* Poprawne centrowanie przycisku */
+    }
+
+    .feedback .review {
+        font-size: 2.2rem;
+    }
+    
+    .feedback .customers-feedback {
+        font-size: 1.6rem;
+    }
+
+    .feedback .customers .item p {
+        font-size: 1rem;
+    }
+}
+
+
+/* === EKRANY PONIŻEJ 480px (Telefony komórkowe) === */
+@media (max-width: 480px) {
+    .container {
+        padding: 3rem 1rem;
+    }
+
+    header {
+        padding-top: 1rem;
+    }
+
+    #about p {
+        font-size: 1rem;
+    }
+    
+    .card-1, .card {
+        width: 95%; /* Elementy zajmują prawie całą szerokość */
+    }
+    
+    .card h3,
+    .card h4 {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .btn:hover {
+        padding: 1rem 1.5rem;
+    }
+
+    .header {
+        font-size: 2rem;
+        padding-top: 5rem;
+    }
+
+    .sub-header {
+        font-size: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .projects .project-grid .project-item {
+        width: 90%; /* Na najmniejszych ekranach projekt zajmuje prawie całą szerokość */
+    }
+
+    .feedback {
+        padding: 3rem 1rem;
+    }
+
+    .feedback .review {
+        font-size: 1.8rem;
+        padding: 1rem;
+    }
+
+    .feedback .customers-feedback {
+        font-size: 1.4rem;
+    }
+    
+    .feedback .customers .item {
+        padding: 1.5rem;
+    }
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* === DODANE STYLE DLA SEKCJI COURSES I KART KURSÓW === */
+
+#courses {
+    padding: 5rem 2rem; /* Spójny padding z .container */
+    display: flex;
+    flex-direction: column; /* Karty kursów jedna pod drugą */
+    align-items: center; /* Wyśrodkowanie kart */
+    gap: 3rem; /* Odstęp między kartami kursów */
+    max-width: 1200px; /* Ograniczenie szerokości tak jak inne kontenery */
+    margin: auto; /* Wyśrodkowanie całej sekcji */
+}
+
+.course-card {
+    margin: 0 auto; /* Upewnij się, że karty są centrowane indywidualnie */
+    padding: 30px 50px; /* Spójny padding z card-1 */
+    width: 100%; /* Pełna szerokość w ramach #courses, ale ograniczymy ją max-width */
+    max-width: 800px; /* Maksymalna szerokość dla czytelności treści */
+    min-height: 400px; /* Minimalna wysokość, aby nie były zbyt małe */
+    background: #1c1f2b;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Tekst i elementy wyrównane do lewej */
+    justify-content: flex-start; /* Treść zaczyna się od góry */
+    gap: 10px; /* Domyślny odstęp między elementami w karcie */
+    text-align: left; /* Wyrównanie tekstu */
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.1); /* Lekki cień, spójny z paletą */
+}
+
+/* Animowane ramki dla .course-card - skopiowane z .card i .card-1 */
+.course-card::after, .course-card::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px; /* Ten padding tworzy iluzję grubości ramki */
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.course-card::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+.course-card h1 {
+    font-size: 2.8rem; /* Nieco mniejszy niż card-1 h1, bardziej proporcjonalny */
+    color: #5e3bee;
+    margin-bottom: 10px;
+    text-align: center; /* Centrowanie nagłówka */
+    width: 100%; /* Rozciągnij na całą szerokość */
+}
+
+.course-card h1 strong { /* Styl dla ceny */
+    font-size: 1.6rem;
+    color: #fff;
+    display: block; /* Cena w nowej linii */
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.course-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.course-card h2 {
+    font-size: 1.6rem;
+    color: #ccc;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Delikatna linia oddzielająca */
+    padding-bottom: 5px;
+}
+
+.course-card .technology-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.course-card .technology-item i {
+    font-size: 1.8em; /* Rozmiar ikon technologii */
+}
+
+/* === RESPONSYWNOŚĆ DLA SEKCJI COURSES - ZGODNIE Z ISTNIEJĄCĄ STRUKTURĄ MEDIA QUERIES === */
+
+/* === EKRANY PONIŻEJ 1200px (np. mniejsze laptopy) === */
+@media (max-width: 1200px) {
+    #courses {
+        max-width: 95%;
+    }
+}
+
+/* === EKRANY PONIŻEJ 1024px (Tablety w orientacji poziomej) === */
+@media (max-width: 1024px) {
+    #courses {
+        padding: 4rem 2rem;
+        gap: 2rem;
+    }
+
+    .course-card {
+        width: 90%;
+        max-width: 650px; /* Ograniczenie szerokości na tabletach */
+        padding: 25px 40px;
+    }
+
+    .course-card h1 {
+        font-size: 2.2rem;
+    }
+
+    .course-card h1 strong {
+        font-size: 1.4rem;
+    }
+
+    .course-card p {
+        font-size: 1rem;
+    }
+
+    .course-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .course-card .technology-item {
+        font-size: 1em;
+    }
+
+    .course-card .technology-item i {
+        font-size: 1.6em;
+    }
+}
+
+/* === EKRANY PONIŻEJ 768px (Tablety w orientacji pionowej) === */
+@media (max-width: 768px) {
+    #courses {
+        padding: 3rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .course-card {
+        width: 95%; /* Na węższych ekranach zajmuje więcej miejsca */
+        max-width: 500px; /* Utrzymujemy max-width dla kontroli */
+        padding: 20px 30px;
+        min-height: auto; /* Pozwalamy karcie na dynamiczną wysokość */
+    }
+
+    .course-card h1 {
+        font-size: 1.8rem;
+    }
+
+    .course-card h1 strong {
+        font-size: 1.2rem;
+    }
+
+    .course-card p {
+        font-size: 0.95rem;
+    }
+
+    .course-card h2 {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        margin-bottom: 8px;
+    }
+
+    .course-card .technology-item {
+        font-size: 0.9em;
+    }
+
+    .course-card .technology-item i {
+        font-size: 1.4em;
+    }
+}
+
+/* === EKRANY PONIŻEJ 480px (Telefony komórkowe) === */
+@media (max-width: 480px) {
+    #courses {
+        padding: 2rem 1rem;
+        gap: 1rem;
+    }
+
+    .course-card {
+        width: 100%; /* Pełna szerokość na bardzo małych ekranach */
+        padding: 15px 20px;
+    }
+
+    .course-card h1 {
+        font-size: 1.5rem;
+    }
+
+    .course-card h1 strong {
+        font-size: 1rem;
+    }
+
+    .course-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .course-card h2 {
+        font-size: 1rem;
+        margin-top: 8px;
+        margin-bottom: 5px;
+    }
+
+    .course-card .technology-item {
+        font-size: 0.85em;
+    }
+
+    .course-card .technology-item i {
+        font-size: 1.2em;
+    }
+}

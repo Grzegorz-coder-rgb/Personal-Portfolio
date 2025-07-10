@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <title>Personal Portfolio | GregProg</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#main">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#projects">My Projects</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+      <button class="btn" onclick="window.location.href='hire.html';">Hire Me!</button>
+      <button class="btn" onclick="window.location.href='learn.html';">Learning Platform!</button>
+    </ul>
+  </nav>
+
+  <header class="container" id="main">
+    <div class="content">
+      <span class="blur"></span>
+      <span class="blur"></span>
+      <h4>CREATE YOUR SITE LIKE A PRO</h4>
+      <h1>Hi, I'm <span>Gregory</span>, Web Developer</h1>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus rem eos aliquid quo rerum
+        temporibus ipsum distinctio numquam ut omnis placeat, nam sint atque quos dolorem laborum? Rerum, esse
+        dolorem.
+      </p>
+      <button class="btn" onclick="window.location.href='hire.html';">Get Started</button>
+    </div>
+    <div class="image">
+      <img src="{{ url_for('static', filename='images/header.png') }}">
+    </div>
+  </header>
+
+  <section class="card-1" id="about">
+    <h1>About Me</h1>
+    <div class="about">
+      <p>
+        I'm Web developer and Python developer. I know python and HTML CSS and JavaScript. 
+        I've got many projects on my github profil. 
+        My best project is game in Pygame. 
+        I can help you with code or give you any advices.
+      </p>
+      <button class="btn"><a href="https://github.com/Grzegorz-coder-rgb" target="_blank">Go to my GitHub</a></button>
+    </div>
+  </section>
+
+  <!--Cennik ------------------------------------------------------------- -->
+  <article id="pricing">
+    <h2 class="header">PROJECT PRICING PLANS</h2>
+    <p class="sub-header">
+      Our pricing plans come with various membership tiers,
+      each tailored to cater to different projects and
+      class+ code types.
+    </p>
+    <div class="offers">
+      <div class="card">
+        <h3>Free Plan</h3>
+        <h4>0$</h4>
+        <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
+        <p><i class="ri-checkbox-circle-line"></i> At home Workouts</p>
+        <button class="btn" onclick="window.location.href='plan.html';">Join Now</button>
+      </div>
+
+      <div class="card">
+        <h3>Gold Plan</h3>
+        <h4>10$</h4>
+        <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
+        <p><i class="ri-checkbox-circle-line"></i> At home Workouts</p>
+        <p><i class="ri-checkbox-circle-line"></i>Pro codes</p>
+        <button class="btn" onclick="window.location.href='plan.html';">Join Now</button>
+      </div>
+
+      <div class="card">
+        <h3>Diamond Plan</h3>
+        <h4>100$</h4>
+        <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
+        <p><i class="ri-checkbox-circle-line"></i> At home Workouts</p>
+        <p><i class="ri-checkbox-circle-line"></i>Pro Codes</p>
+        <p><i class="ri-checkbox-circle-line"></i>Your own projects</p>
+        <p><i class="ri-checkbox-circle-line"></i>Proffesional coaching</p>
+        <button class="btn" onclick="window.location.href='plan.html';">Join Now</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- Courses------------------------------------------------------------ -->
+<section class="courses" id="courses">
+    <div class="course-card">
+        <h1>Full Stack Developer</h1>
+        <h1><strong>Cena: 4000zł</strong></h1> <p>
+            Na tym kursie nauczysz się tworzyć zaawansowane, nowoczesne i responsywne strony internetowe z wykorzystaniem najnowszych technologii.
+            Przejdziesz przez Frontend, Backend i dotrzesz do Full Stack.
+            Twoje strony będą przyciągać uwagę klientów. Postawisz na nowoczesne UI (frontend) i zaawansowane mechaniki, które ożywią Twoją stronę (backend).
+            Ponadto nauczysz się korzystać z baz danych (database).
+        </p>
+        <h2>Wykorzystywane technologie</h2>
+        <div class="technology-item">
+            <i class="devicon-python-plain colored"></i>
+            <span>Python</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-flask-original colored"></i>
+            <span>Flask</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-django-plain colored"></i>
+            <span>Django</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-html5-plain colored"></i>
+            <span>HTML5</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-javascript-plain colored"></i>
+            <span>JavaScript</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-css3-plain colored"></i>
+            <span>CSS3</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-tailwindcss-plain colored"></i>
+            <span>Tailwind CSS</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-react-original colored"></i>
+            <span>React</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-mysql-plain colored"></i>
+            <span>MySQL</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-git-plain colored"></i>
+            <span>Git</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-github-original colored"></i>
+            <span>GitHub</span>
+        </div>
+        <button class="btn" onclick="window.location.href='full.html';">View More</button>
+    </div>
+
+    <div class="course-card">
+        <h1>Python Developer</h1>
+        <h1><strong>Cena: 1300zł</strong></h1>
+        <p>
+            Na tym kursie nauczysz się pisać proste i zaawansowane skrypty, zrobisz swoją grę 2D i wiele innych praktycznych projektów.
+            Opanujesz najnowsze technologie, z których korzystają profesjonalni programiści podczas pracy z Pythonem.
+        </p>
+        <h2>Wykorzystywane technologie</h2>
+        <div class="technology-item">
+            <i class="devicon-python-plain colored"></i>
+            <span>Python</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-git-plain colored"></i>
+            <span>Git</span>
+        </div>
+
+        <div class="technology-item">
+            <i class="devicon-github-original colored"></i>
+            <span>GitHub</span>
+        </div>
+        <button class="btn" onclick="window.location.href='python.html';">View More</button>
+    </div>
+
+    <div class="course-card">
+        <h1>Frontend Developer</h1>
+        <h1><strong>Cena: 2500zł</strong></h1>
+        <p>
+            Zanurz się w świat tworzenia interaktywnych i estetycznych interfejsów użytkownika. Naucz się budować responsywne strony, które zachwycą każdego użytkownika. Od podstaw HTML/CSS/JS po zaawansowane frameworki.
+        </p>
+        <h2>Wykorzystywane technologie</h2>
+        <div class="technology-item">
+            <i class="devicon-html5-plain colored"></i>
+            <span>HTML5</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-css3-plain colored"></i>
+            <span>CSS3</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-javascript-plain colored"></i>
+            <span>JavaScript</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-react-original colored"></i>
+            <span>React</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-tailwindcss-plain colored"></i>
+            <span>Tailwind CSS</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-git-plain colored"></i>
+            <span>Git</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-github-original colored"></i>
+            <span>GitHub</span>
+        </div>
+        <button class="btn" onclick="window.location.href='frontend.html';">View More</button>
+    </div>
+
+    <div class="course-card">
+        <h1>Backend Developer</h1>
+        <h1><strong>Cena: 2800zł</strong></h1>
+        <p>
+            Opanuj sztukę tworzenia solidnych i skalowalnych serwerów oraz API. Dowiedz się, jak zarządzać danymi i implementować złożoną logikę biznesową, która napędza nowoczesne aplikacje webowe.
+        </p>
+        <h2>Wykorzystywane technologie</h2>
+        <div class="technology-item">
+            <i class="devicon-python-plain colored"></i>
+            <span>Python</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-flask-original colored"></i>
+            <span>Flask</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-django-plain colored"></i>
+            <span>Django</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-mysql-plain colored"></i>
+            <span>MySQL</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-postgresql-plain colored"></i>
+            <span>PostgreSQL</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-git-plain colored"></i>
+            <span>Git</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-github-original colored"></i>
+            <span>GitHub</span>
+        </div>
+        <button class="btn" onclick="window.location.href='backend.html';">View More</button>
+    </div>
+
+    <div class="course-card">
+        <h1>AI & ML Developer</h1>
+        <h1><strong>Cena: 3500zł</strong></h1>
+        <p>
+            Wkrocz do fascynującego świata Sztucznej Inteligencji i Uczenia Maszynowego. Naucz się budować modele predykcyjne, analizować dane i tworzyć inteligentne systemy, które uczą się i adaptują.
+        </p>
+        <h2>Wykorzystywane technologie</h2>
+        <div class="technology-item">
+            <i class="devicon-python-plain colored"></i>
+            <span>Python</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-jupyter-plain colored"></i>
+            <span>Jupyter (do analizy)</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-tensorflow-plain colored"></i>
+            <span>TensorFlow (biblioteka ML)</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-pytorch-plain colored"></i>
+            <span>PyTorch (biblioteka ML)</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-numpy-plain colored"></i>
+            <span>NumPy (do obliczeń naukowych)</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-pandas-plain colored"></i>
+            <span>Pandas (do analizy danych)</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-scikitlearn-plain colored"></i>
+            <span>Scikit-learn (biblioteka ML)</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-git-plain colored"></i>
+            <span>Git</span>
+        </div>
+        <div class="technology-item">
+            <i class="devicon-github-original colored"></i>
+            <span>GitHub</span>
+        </div>
+        <button class="btn" onclick="window.location.href='AI.html';">View More</button>
+    </div>
+
+</section>
+ 
+  <div class="projects" id="projects">
+  <h1 class = "h1">My Projects</h1>
+  <h2 class="h2">You can buy my projects</h2>
+        
+  <div class="project-grid"> 
+    <div class="projects-top">
+      <div class="project-item"> 
+        <h3>Python Game in Pgzrun</h3> 
+        <h4>1$</h4> 
+        <p>It's <span>Ultimate</span> game of name "Three Games" 
+          in witch you can select and change your game. You have got a <span class="pgz">Shooter</span> <span class="pgz">Runner</span> and <span class="pgz">Clicker</span>.
+        </p>
+        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button> 
+      </div>
+
+      <div class="project-item"> 
+        <h3>Pong Game</h3>
+        <h4>1$</h4>
+        <p>It's game in witch you must bounce the ball and play with AI.</p>
+        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+      </div>
+
+      <div class="project-item"> 
+        <h3>XO-game</h3>
+        <h4>1$</h4>
+        <p>It's simple XO-game. You can play it with your friend.</p>
+        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+      </div>
+
+      <div class="project-item"> 
+        <h3>Weather App</h3>
+        <h4>2$</h4>
+        <p>It's a app in witch you can check weather in your place.</p>
+        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+      </div>
+    </div>
+    <div class="projects-bottom">
+      <div class="project-item">
+          <h3>To-Do List App</h3>
+          <h4>1.5$</h4>
+          <p>A simple yet effective to-do list application to keep track of your tasks.</p>
+          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+      </div>
+
+      <div class="project-item">
+          <h3>Basic Calculator</h3>
+          <h4>0.5$</h4>
+          <p>A functional calculator for basic arithmetic operations built with Python.</p>
+          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+      </div>
+
+      <div class="project-item">
+          <h3>E-commerce Product Page</h3>
+          <h4>3$</h4>
+          <p>A responsive e-commerce product page template using HTML, CSS, and JavaScript.</p>
+          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+      </div>
+
+      <div class="project-item">
+          <h3>Landing Page Template</h3>
+          <h4>2.5$</h4>
+          <p>A modern and clean landing page template suitable for various businesses.</p>
+          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Feedback ------------------------------------------------------ -->
+
+  <div class="feedback" id="feedback">
+    <h5 class="review">Clients Reviews</h5>
+    <h3 class="customers-feedback">Customers Feedback</h3>
+    <div class="customers">
+      <div class="item">
+        <div class="rating">
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+        </div>
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
+          tristique. Duis cursus, mi quis viverra."
+        </p>
+        <div class="user">
+          <img src="{{ url_for('static', filename='images/us-1.jpg') }}">
+          <div class="info">
+            <h5>Dianne Russell</h5>
+            <p>Starbucks</p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="rating">
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+        </div>
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
+          tristique. Duis cursus, mi quis viverra."
+        </p>
+        <div class="user">
+          <img src="{{ url_for('static', filename='images/us-2.jpg') }}">
+          <div class="info">
+            <h5>Kristian Watson</h5>
+            <p>Louis Vuitton</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="rating">
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+          <i class='bx bxs-star'></i>
+        </div>
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
+          tristique. Duis cursus, mi quis viverra."
+        </p>
+        <div class="user">
+          <img src="{{ url_for('static', filename='images/us-3.jpg') }}">
+          <div class="info">
+            <h5>Angelo Crispy</h5>
+            <p>Mcdonald's</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stopka---------------------------------------------------------------- -->
+
+  <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}">
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-github-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>Projects</h4>
+            <a href="#">HTML</a>
+            <a href="#">CSS & JS</a>
+            <a href="#">Python</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privicy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 GregProg Channel. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

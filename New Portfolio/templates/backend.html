@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <title>Backend Developer - Szczegóły Kursu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/course-details-common.css') }}">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}#main">Home</a></li>
+            <li><a href="{{ url_for('index') }}#about">About Me</a></li>
+            <li><a href="{{ url_for('index') }}#pricing">Pricing</a></li>
+            <li><a href="{{ url_for('index') }}#courses">Courses</a></li>
+            <li><a href="{{ url_for('index') }}#projects">My Projects</a></li>
+            <li><a href="{{ url_for('index') }}#feedback">Feedback</a></li>
+            <button class="btn" onclick="window.location.href='{{ url_for('hire') }}';">Hire Me!</button>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h2 class="section-header text-center">Backend Developer</h2>
+
+        <div class="course-detail-page-wrapper glass-card course-gradient-backend">
+            <div class="course-main-info">
+                <h3 class="course-title">Backend Developer</h3>
+                <p class="course-description">
+                    Opanuj sztukę tworzenia solidnych i skalowalnych serwerów oraz API. Dowiedz się, jak zarządzać danymi i implementować złożoną logikę biznesową, która napędza nowoczesne aplikacje webowe. Kurs ten zapewni Ci głębokie zrozumienie technologii backendowych i najlepszych praktyk.
+                </p>
+                <div class="course-price-area">
+                    <span class="price">2800zł</span>
+                    <a href="#contact" class="btn enroll-btn"><i class="ri-arrow-right-line"></i> Zapisz się na kurs</a>
+                </div>
+                <div class="technologies-used">
+                    <h4>Wykorzystywane technologie:</h4>
+                    <div class="tech-tags-grid">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-program-info">
+                <h3>Program Kursu:</h3>
+                <ul class="program-list">
+                    <li>Wprowadzenie do programowania serwerowego i architektury klient-serwer</li>
+                    <li>Podstawy języka Python w kontekście backendu</li>
+                    <li>Framework Flask: tworzenie prostych API, routing, szablony Jinja</li>
+                    <li>Framework Django: Model-View-Controller (MVC) / Model-View-Template (MVT), ORM, administracja</li>
+                    <li>Zasady tworzenia RESTful API: metody HTTP, statusy, struktura odpowiedzi JSON</li>
+                    <li>Bazy danych relacyjne (SQL): MySQL i PostgreSQL - projektowanie baz, zapytania SQL, indeksy, transakcje</li>
+                    <li>Object-Relational Mapping (ORM): SQLAlchemy (dla Flaska), Django ORM</li>
+                    <li>Bazy danych NoSQL (wprowadzenie do MongoDB): podstawy, zastosowania</li>
+                    <li>Autoryzacja i autentykacja: sesje, tokeny JWT, OAuth2 (podstawy)</li>
+                    <li>Zabezpieczenia aplikacji webowych: XSS, CSRF, SQL Injection, szyfrowanie haseł</li>
+                    <li>Testowanie backendu: unit tests, integration tests</li>
+                    <li>Deployment aplikacji backendowych: podstawy działania serwerów (nginx, Apache), konteneryzacja (Docker)</li>
+                    <li>Zarządzanie zależnościami i środowiskami wirtualnymi</li>
+                    <li>Asynchroniczność w Pythonie (asyncio - wprowadzenie)</li>
+                    <li>Monitorowanie i logowanie aplikacji</li>
+                    <li>Projekt końcowy: budowa kompleksowego API z bazą danych i autoryzacją.</li>
+                </ul>
+            </div>
+
+            <div class="course-target-learn">
+                <h3>Dla Kogo Jest Ten Kurs:</h3>
+                <p>
+                    Kurs jest skierowany do osób, które chcą zbudować mocne fundamenty w programowaniu backendowym i nauczyć się tworzyć stabilne, bezpieczne i wydajne systemy. Idealny dla programistów Pythona chcących specjalizować się w web developmentcie po stronie serwera oraz dla tych, którzy chcą poszerzyć swoje umiejętności Full Stack o zaawansowany backend.
+                </p>
+                <h3>Czego Nauczysz Się na Kursie:</h3>
+                <ul class="learn-list">
+                    <li>Projektować i implementować wydajne i bezpieczne API.</li>
+                    <li>Efektywnie zarządzać bazami danych i manipulować danymi.</li>
+                    <li>Wdrażać aplikacje serwerowe i zarządzać ich cyklem życia.</li>
+                    <li>Zabezpieczać aplikacje przed typowymi zagrożeniami.</li>
+                    <li>Testować kod backendowy, aby zapewnić jego stabilność.</li>
+                    <li>Korzystać z popularnych frameworków Pythonowych (Flask, Django) do budowy backendu.</li>
+                </ul>
+                <h3>Wykorzystywane technologie:</h3>
+                <div class="technologies-grid">
+                    <div class="technology-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                    <div class="technology-item"><i class="devicon-flask-original colored"></i><span>Flask</span></div>
+                    <div class="technology-item"><i class="devicon-django-plain colored"></i><span>Django</span></div>
+                    <div class="technology-item"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                    <div class="technology-item"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+                    <div class="technology-item"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+                    <div class="technology-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                    <div class="technology-item"><i class="devicon-github-original colored"></i><span>GitHub</span></div>
+                    <div class="technology-item"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="call-to-action text-center">
+            <p>Zbuduj silny fundament swojej kariery w backendzie!</p>
+            <a href="#contact" class="btn enroll-btn">Zapisz się teraz!</a>
+        </div>
+    </main>
+
+    <footer class="container">
+        <div class="column">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo firmy">
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-github-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>Projects</h4>
+            <a href="#">HTML</a>
+            <a href="#">CSS & JS</a>
+            <a href="#">Python</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="copyright">
+            Copyright © 2025 GregProg Channel. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

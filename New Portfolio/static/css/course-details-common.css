@@ -1,0 +1,798 @@
+/* Import czcionek Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap");
+
+/* === Zmienne CSS (Custom Properties) === */
+:root {
+    /* Kolory podstawowe */
+    --clr-bg-dark: #0f0f1a; /* Bardzo ciemne tło */
+    --clr-text-primary: #f0f0f0; /* Jasny tekst główny */
+    --clr-text-secondary: #c0c0c0; /* Lekko ciemniejszy tekst */
+    --clr-accent-blue: #007bff; /* Główny akcent niebieski */
+    --clr-accent-purple: #8a2be2; /* Główny akcent fioletowy */
+    --clr-accent-green: #28a745; /* Akcent zielony (np. dla sukcesu) */
+    --clr-button-bg: #8a2be2; /* Tło przycisku */
+    --clr-button-hover: #7b24cc; /* Tło przycisku hover */
+
+    /* Kolory Glassmorphism */
+    --clr-glass-bg: rgba(255, 255, 255, 0.05); /* Tło przezroczyste */
+    --clr-glass-border: rgba(255, 255, 255, 0.1); /* Ramka przezroczysta */
+
+    /* Cienie */
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+    /* Promienie zaokrąglenia */
+    --border-radius-sm: 8px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 25px;
+
+    /* Odstępy */
+    --padding-sm: 1rem;
+    --padding-md: 2rem;
+    --padding-lg: 3rem;
+
+    /* Animacja gradientu */
+    --angle: 0deg;
+    --border-thickness: 3px; /* Grubość animowanej ramki */
+    --animation-speed-gradient: 15s; /* Szybkość animacji ramki */
+    --blur-strength: 10px; /* Siła rozmycia glassmorphism */
+}
+
+/* === Podstawowe style i reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--clr-bg-dark);
+    color: var(--clr-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden; /* Zapobiega poziomemu scrollowaniu */
+    position: relative; /* Dla tła rozmycia, jeśli będzie */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* === Kontener ogólny === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--padding-md);
+}
+
+/* === Nagłówki sekcji === */
+.section-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    text-align: center;
+    background: linear-gradient(90deg, var(--clr-accent-blue), var(--clr-accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback for older browsers */
+    line-height: 1.2;
+}
+
+/* === Przyciski === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--clr-button-bg);
+    color: var(--clr-text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-light);
+    white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+}
+
+.btn:hover {
+    background-color: var(--clr-button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* === Nawigacja === */
+nav {
+    display: flex;
+    justify-content: center; /* Wyśrodkuj elementy nawigacji */
+    align-items: center;
+    padding: 1rem 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Lekko przezroczyste tło nawigacji */
+    backdrop-filter: blur(var(--blur-strength));
+    -webkit-backdrop-filter: blur(var(--blur-strength));
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav ul li a {
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--clr-accent-blue), var(--clr-accent-purple));
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: var(--clr-accent-blue);
+}
+
+nav .btn {
+    margin-left: 2rem; /* Odstęp od ostatniego linku */
+}
+
+
+/* === Efekt rozmycia tła (Blur) - jeśli używasz globalnie === */
+/* Jeśli "blur" jest elementem nakładającym się na tło, a nie tylko stylami */
+/* Zastąpi to Twoje puste divy blur */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(138, 43, 226, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(0, 123, 255, 0.2) 0%, transparent 40%);
+    z-index: -2; /* Pod wszystkim */
+}
+
+
+/* === Glassmorphism Card (Ogólne style) === */
+.glass-card {
+    background-color: var(--clr-glass-bg);
+    border: 1px solid var(--clr-glass-border);
+    border-radius: var(--border-radius-lg);
+    backdrop-filter: blur(var(--blur-strength));
+    -webkit-backdrop-filter: blur(var(--blur-strength)); /* Dla Safari */
+    box-shadow: var(--shadow-light);
+    position: relative; /* Dla animowanej ramki */
+    overflow: hidden; /* Ważne, aby gradient ramki nie wyjeżdżał */
+    z-index: 0; /* Ważne dla z-index pseudoelementów */
+    padding: 2.5rem; /* Domyślny padding dla kart */
+    margin-bottom: 3rem; /* Odstęp między kartami/sekcjami */
+}
+
+/* Animowana ramka dla glass-card */
+.glass-card::before,
+.glass-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* Domyślny gradient, który będzie nadpisywany przez specyficzne klasy kursów */
+    background: conic-gradient(from var(--angle),
+        #ff4545 0%, #00ff99 25%, #006aff 50%, #ff0095 75%, #ff4545 100%
+    );
+    z-index: -1;
+    animation: spin var(--animation-speed-gradient) linear infinite;
+    transform-origin: center center; /* Ważne dla obrotu */
+}
+
+/* Pseudo-element do efektu rozmytej poświaty ramki */
+.glass-card::before {
+    filter: blur(var(--blur-strength)); /* Rozmycie gradientu */
+    opacity: 0.4; /* Przezroczystość dla efektu poświaty */
+}
+
+/* Pseudo-element do ostrej ramki (maskowanie) */
+.glass-card::after {
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: exclude; /* Dla Safari */
+    padding: var(--border-thickness); /* Tworzy ramkę */
+}
+
+/* Animacja obracania dla gradientu */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* === Sekcje Szczegółów Kursu (dla pojedynczych stron) === */
+
+.course-detail-page-wrapper {
+    /* Używa już .glass-card, więc dziedziczy podstawowe style */
+    padding: 3rem 2.5rem; /* Większy padding dla głównej karty kursu */
+    margin-top: 3rem; /* Odstęp od nagłówka sekcji */
+    display: grid;
+    grid-template-columns: 1fr; /* Domyślnie jedna kolumna */
+    gap: 2.5rem; /* Odstępy między sekcjami wewnątrz karty */
+}
+
+/* === Specyficzne gradienty dla poszczególnych kursów (nadpisują domyślny glass-card) === */
+
+/* Full Stack Developer (przykład - dostosuj, jeśli masz inny) */
+.course-gradient-fullstack::before, .course-gradient-fullstack::after {
+    background: conic-gradient(from var(--angle),
+        #6a82fb 0%, #fc5c7d 25%, #6a82fb 50%, #fc5c7d 75%, #6a82fb 100%
+    );
+}
+
+/* Frontend Developer: delikatny niebiesko-zielony */
+.course-gradient-frontend::before, .course-gradient-frontend::after {
+    background: conic-gradient(from var(--angle),
+        #2196F3 0%, #4CAF50 25%, #2196F3 50%, #4CAF50 75%, #2196F3 100%
+    );
+}
+
+/* Backend Developer: cieplejszy, żółto-pomarańczowy */
+.course-gradient-backend::before, .course-gradient-backend::after {
+    background: conic-gradient(from var(--angle),
+        #FFC107 0%, #FF5722 25%, #FFC107 50%, #FF5722 75%, #FFC107 100%
+    );
+}
+
+/* AI & ML Developer: fioletowo-różowy */
+.course-gradient-ai-ml::before, .course-gradient-ai-ml::after {
+    background: conic-gradient(from var(--angle),
+        #9C27B0 0%, #E91E63 25%, #9C27B0 50%, #E91E63 75%, #9C27B0 100%
+    );
+}
+
+/* --- Elementy wewnątrz course-detail-page-wrapper --- */
+
+.course-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--clr-accent-blue); /* Użyj jednego z kolorów akcentu */
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+}
+
+.course-description {
+    font-size: 1.15rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.course-price-area {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap; /* Zezwól na zawijanie na małych ekranach */
+}
+
+.course-price-area .price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--clr-accent-purple);
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+/* --- Technologie wykorzystywane (Tech Tags) --- */
+.technologies-used h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: var(--clr-text-primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.technologies-used h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, var(--clr-accent-purple), var(--clr-accent-blue));
+    border-radius: 1px;
+}
+
+.tech-tags-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    color: var(--clr-text-secondary);
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--clr-text-primary);
+    transform: translateY(-2px);
+}
+
+/* --- Program Kursu / Dla kogo / Czego się nauczysz (Listy) --- */
+.course-program-info h3,
+.course-target-learn h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--clr-text-primary);
+    margin-top: 2.5rem; /* Odstęp od poprzedniej sekcji */
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--clr-accent-blue), var(--clr-accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+}
+
+.course-program-info h3::after,
+.course-target-learn h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px; /* Krótka linia pod nagłówkiem */
+    height: 2px;
+    background: linear-gradient(to right, var(--clr-accent-blue), var(--clr-accent-purple));
+    border-radius: 1px;
+}
+
+.program-list, .learn-list {
+    margin-top: 1rem;
+}
+
+.program-list li, .learn-list li {
+    position: relative;
+    padding-left: 2.2rem; /* Większy odstęp na ikonę */
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.5;
+}
+
+.program-list li::before, .learn-list li::before {
+    content: '\ea10'; /* Remixicon check-line icon */
+    font-family: 'remixicon' !important; /* Upewnij się, że używa Remixicon */
+    position: absolute;
+    left: 0;
+    color: var(--clr-accent-green); /* Użyj koloru akcentu */
+    font-size: 1.5rem; /* Większa ikona */
+    top: 0.1em; /* Lepsze pionowe wyrównanie */
+    line-height: 1;
+}
+
+.course-target-learn p {
+    font-size: 1.15rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* === Technologie (ikony Devicon) === */
+.technologies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Większy odstęp dla lepszej czytelności */
+    margin-top: 1.5rem;
+    justify-content: flex-start; /* Domyślnie wyrównaj do lewej */
+}
+
+.technology-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.2rem;
+    background-color: var(--clr-glass-bg); /* Lekko przezroczyste tło */
+    border: 1px solid var(--clr-glass-border);
+    border-radius: var(--border-radius-sm);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.technology-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.technology-item i {
+    font-size: 3.5rem; /* Zwiększ rozmiar ikon Devicon */
+    line-height: 1; /* Popraw wyrównanie */
+}
+
+.technology-item span {
+    font-size: 1rem;
+    color: var(--clr-text-secondary);
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+/* === Sekcja Call To Action na dole strony === */
+.call-to-action {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background-color: var(--clr-glass-bg);
+    border: 1px solid var(--clr-glass-border);
+    border-radius: var(--border-radius-lg);
+    backdrop-filter: blur(var(--blur-strength));
+    -webkit-backdrop-filter: blur(var(--blur-strength));
+    box-shadow: var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.call-to-action::before, .call-to-action::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from var(--angle),
+        var(--clr-accent-purple) 0%, var(--clr-accent-blue) 25%, var(--clr-accent-purple) 50%, var(--clr-accent-blue) 75%, var(--clr-accent-purple) 100%
+    );
+    z-index: -1;
+    animation: spin var(--animation-speed-gradient) linear infinite;
+}
+.call-to-action::before { filter: blur(var(--blur-strength)); opacity: 0.4; }
+.call-to-action::after {
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude; -webkit-mask-composite: exclude;
+    padding: var(--border-thickness);
+}
+
+.call-to-action p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--clr-text-primary);
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* === Stopka (Footer) === */
+footer {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 4rem var(--padding-md) 2rem;
+    margin-top: 5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0.3); /* Lekko ciemniejsze tło */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer .column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+footer .column .logo img {
+    max-height: 50px;
+    margin-bottom: 1rem;
+}
+
+footer .column p {
+    color: var(--clr-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+footer .column h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--clr-text-primary);
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+footer .column h4::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, var(--clr-accent-blue), var(--clr-accent-purple));
+    border-radius: 1px;
+}
+
+footer .column a {
+    color: var(--clr-text-secondary);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+footer .column a:hover {
+    color: var(--clr-accent-blue);
+}
+
+footer .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+footer .socials a {
+    font-size: 1.5rem;
+    color: var(--clr-text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .socials a:hover {
+    color: var(--clr-accent-blue);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    grid-column: 1 / -1; /* Rozciąga się na wszystkie kolumny */
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+    color: var(--clr-text-secondary);
+}
+
+/* === Media Queries (Responsywność) === */
+@media (min-width: 992px) {
+    .course-detail-page-wrapper {
+        grid-template-columns: 2fr 1.5fr; /* Dwie kolumny: główna info + program */
+    }
+    .course-program-info {
+        grid-column: 2 / 3; /* Program w prawej kolumnie */
+        grid-row: 1 / 3; /* Rozciągnij program na 2 rzędy */
+    }
+    .course-target-learn {
+        grid-column: 1 / 2; /* Dla kogo/Czego nauczysz się w lewej kolumnie pod info */
+        grid-row: 2 / 3;
+    }
+    .technologies-grid {
+        justify-content: flex-start; /* Wyrównaj do lewej na dużych ekranach */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--padding-sm);
+    }
+
+    .section-header {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* Pozwól linkom zawijać się */
+        justify-content: center;
+        gap: 1rem;
+    }
+    nav .btn {
+        margin-left: 0;
+        margin-top: 1rem; /* Przycisk pod linkami */
+        width: 100%; /* Rozciągnij przycisk */
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .glass-card {
+        padding: 1.5rem;
+    }
+
+    .course-detail-page-wrapper {
+        grid-template-columns: 1fr; /* Zawsze jedna kolumna na mniejszych ekranach */
+        gap: 2rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .course-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .course-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .course-price-area {
+        flex-direction: column; /* Ułóż cenę i przycisk w kolumnie */
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .course-price-area .price {
+        font-size: 2.5rem;
+    }
+
+    .technologies-used h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .tech-tags-grid {
+        gap: 0.8rem;
+    }
+
+    .tech-tag {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .course-program-info h3,
+    .course-target-learn h3 {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .program-list li, .learn-list li {
+        font-size: 0.95rem;
+        padding-left: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    .program-list li::before, .learn-list li::before {
+        font-size: 1.3rem;
+    }
+
+    .technologies-grid {
+        gap: 1rem;
+    }
+    .technology-item {
+        padding: 0.8rem 1rem;
+    }
+    .technology-item i {
+        font-size: 3rem;
+    }
+    .technology-item span {
+        font-size: 0.9rem;
+    }
+
+    .call-to-action {
+        padding: 2rem;
+        margin-top: 3rem;
+    }
+    .call-to-action p {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    footer {
+        grid-template-columns: 1fr; /* Jedna kolumna w stopce */
+        padding: 3rem var(--padding-sm) 1.5rem;
+        text-align: center;
+    }
+    footer .column {
+        align-items: center; /* Wyśrodkuj kolumny */
+    }
+    footer .column h4 {
+        margin-top: 1.5rem;
+    }
+    footer .column h4::after {
+        left: 50%;
+        transform: translateX(-50%); /* Wyśrodkuj podkreślenie */
+    }
+    footer .socials {
+        justify-content: center; /* Wyśrodkuj ikony społecznościowe */
+    }
+    .copyright {
+        padding-top: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        font-size: 2rem;
+    }
+
+    .course-title {
+        font-size: 1.8rem;
+    }
+
+    .course-price-area .price {
+        font-size: 2rem;
+    }
+
+    .course-program-info h3,
+    .course-target-learn h3 {
+        font-size: 1.5rem;
+    }
+
+    .program-list li, .learn-list li {
+        font-size: 0.9rem;
+        padding-left: 1.5rem;
+    }
+    .program-list li::before, .learn-list li::before {
+        font-size: 1.1rem;
+    }
+
+    .technology-item i {
+        font-size: 2.5rem;
+    }
+    .technology-item span {
+        font-size: 0.8rem;
+    }
+
+    .call-to-action p {
+        font-size: 1.2rem;
+    }
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+body::before {
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
+}

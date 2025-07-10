@@ -1,0 +1,456 @@
+/* Specific styles for projects.html */
+
+.projects-full {
+    margin: 3rem auto;
+    padding: 2rem;
+    position: relative;
+    border-radius: 10px;
+    max-width: 1200px;
+    background-color: #1a1f2b;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* To centrumje elementy podrzędne poziomo, jeśli mają mniejszą szerokość niż kontener */
+    gap: 2rem;
+}
+
+.projects-full::before,
+.projects-full::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 7px;
+    border-radius: 10px;
+    animation: spin 2s linear infinite;
+}
+
+.projects-full::before {
+    filter: blur(8rem);
+    opacity: 1;
+}
+
+.projects-full .header {
+    font-size: 3.5rem;
+    color: #5e3bee;
+    margin-bottom: 0.5rem; /* Zapewnia odstęp od sub-header */
+    text-align: center;
+    width: 100%; /* Upewnij się, że zajmuje pełną szerokość do centrowania tekstu */
+}
+
+
+.projects-full .card-1{
+    margin: 100px auto;
+    padding: 2em;
+    width: 600px;
+    min-height: 300px;
+    background: #000;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    padding: 30px 50px; /* Ten padding nadpisuje poprzedni 'padding: 2em;' */
+}
+
+.project-grid-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.project-item {
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.project-item h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: #5e3bee;
+    background-color: #1c1f2b;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+}
+
+.project-item h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #00ff99;
+    text-align: center;
+    width: 100%;
+}
+
+.project-item p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Allows the paragraph to take available space */
+}
+
+.project-item p span {
+    font-weight: bold;
+    color: #00c3ff;
+}
+
+.project-item .btn {
+    width: 100%;
+    text-align: center;
+    margin-top: auto; /* Pushes the button to the bottom */
+}
+
+.more-projects-info {
+    background-color: #1c1f2b;
+    padding: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    position: relative; /* For pseudo-elements */
+    margin-left: auto; /* Centrowanie w flex containerze */
+    margin-right: auto; /* Centrowanie w flex containerze */
+}
+
+.more-projects-info::before, .more-projects-info::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 5px;
+    border-radius: 10px;
+    animation: spin 1s linear infinite;
+}
+
+.more-projects-info::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+.more-projects-info h3 {
+    font-size: 2rem;
+    color: #5e3bee;
+    margin-bottom: 1rem;
+}
+
+.more-projects-info p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.more-projects-info .btn {
+    width: auto; /* Variable width button */
+    padding: 0.8rem 2rem;
+}
+
+/* Media Queries for projects.html */
+@media (max-width: 1024px) {
+    .projects-full {
+        padding: 1.5rem;
+    }
+
+    .projects-full .header {
+        font-size: 3rem;
+    }
+
+    .projects-full .sub-header {
+        font-size: 1.2rem; /* Zmniejszony rozmiar na mniejszych ekranach */
+        padding: 0; /* Zmniejszony padding na mniejszych ekranach */
+        margin-bottom: 1.5rem;
+    }
+
+    .project-grid-full {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .project-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .project-item h4 {
+        font-size: 1.6rem;
+    }
+    
+    .project-item p {
+        font-size: 0.95rem;
+    }
+
+    .more-projects-info {
+        padding: 2rem;
+    }
+
+    .more-projects-info h3 {
+        font-size: 1.8rem;
+    }
+
+    .more-projects-info p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-full {
+        padding: 1rem;
+    }
+
+    .projects-full .header {
+        font-size: 2.5rem;
+    }
+
+    .projects-full .sub-header {
+        font-size: 1rem; /* Zmniejszony rozmiar na mniejszych ekranach */
+        padding: 0; /* Zmniejszony padding na mniejszych ekranach */
+        margin-bottom: 1rem;
+    }
+
+    .project-grid-full {
+        grid-template-columns: 1fr; /* One project per row */
+        gap: 1.5rem;
+    }
+
+    .project-item {
+        width: 90%;
+        max-width: 400px; /* Constrain width of single project */
+        margin: 0 auto; /* Center it */
+    }
+
+    .project-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .project-item h4 {
+        font-size: 1.5rem;
+    }
+
+    .project-item p {
+        font-size: 0.9rem;
+    }
+
+    .more-projects-info {
+        padding: 1.5rem;
+    }
+
+    .more-projects-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .more-projects-info p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-full .header {
+        font-size: 2rem;
+    }
+
+    .projects-full .sub-header {
+        font-size: 0.9rem; /* Zmniejszony rozmiar na mniejszych ekranach */
+        padding: 0; /* Zmniejszony padding na mniejszych ekranach */
+        margin-bottom: 0.8rem;
+    }
+
+    .project-item {
+        padding: 1rem;
+    }
+
+    .project-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-item h4 {
+        font-size: 1.3rem;
+    }
+
+    .project-item p {
+        font-size: 0.85rem;
+    }
+
+    .more-projects-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .more-projects-info p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Media Queries for projects.html */
+
+/* Tablety i małe laptopy (do 1024px) */
+@media (max-width: 1024px) {
+    .projects-full {
+        padding: 1.5rem;
+    }
+
+    .projects-full .header {
+        font-size: 3rem;
+    }
+
+    .projects-full .sub-header {
+        font-size: 1.2rem;
+        padding: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-grid-full {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .project-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .project-item h4 {
+        font-size: 1.6rem;
+    }
+
+    .project-item p {
+        font-size: 0.95rem;
+    }
+
+    .more-projects-info {
+        padding: 2rem;
+    }
+
+    .more-projects-info h3 {
+        font-size: 1.8rem;
+    }
+
+    .more-projects-info p {
+        font-size: 1rem;
+    }
+}
+
+/* Smartfony w orientacji pionowej i małe tablety (do 768px) */
+@media (max-width: 768px) {
+    .projects-full {
+        padding: 1rem;
+    }
+
+    .projects-full .header {
+        font-size: 2.5rem;
+    }
+
+    .projects-full .sub-header {
+        font-size: 1rem;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    .project-grid-full {
+        grid-template-columns: 1fr; /* jeden projekt na wiersz */
+        gap: 1.5rem;
+    }
+
+    .project-item {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .project-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .project-item h4 {
+        font-size: 1.5rem;
+    }
+
+    .project-item p {
+        font-size: 0.9rem;
+    }
+
+    .more-projects-info {
+        padding: 1.5rem;
+    }
+
+    .more-projects-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .more-projects-info p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Małe smartfony (do 480px) */
+@media (max-width: 480px) {
+    .projects-full .header {
+        font-size: 2rem;
+    }
+
+    .projects-full .sub-header {
+        font-size: 0.9rem;
+        padding: 0;
+        margin-bottom: 0.8rem;
+    }
+
+    .project-item {
+        padding: 1rem;
+    }
+
+    .project-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-item h4 {
+        font-size: 1.3rem;
+    }
+
+    .project-item p {
+        font-size: 0.85rem;
+    }
+
+    .more-projects-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .more-projects-info p {
+        font-size: 0.85rem;
+    }
+}
+
+
+@keyframes spin{
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
+}
+
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
