@@ -1,0 +1,755 @@
+
+:root {
+    --color-background-dark: #000;
+    --color-card-background: #1c1f2b;
+    --color-dark-alt: #16213e;
+    --color-dark-alt-lighter: #1f2a48;
+    --color-primary: #5e3bee;
+    --color-primary-dark: #4d2add;
+    --color-primary-light: #7e6afb;
+    --color-secondary: #00cec9;
+    --color-secondary-dark: #00b0a8;
+    --color-button-background: #0044ff;
+    --color-white: #fff;
+    --color-text-light: #ccc;
+    --color-text-lighter: #e0e0e0;
+    --color-text-darker: #aaaaaa;
+}
+
+/* Nowe ogólne style dla Learn Page */
+body {
+    background-color: var(--color-background-dark); /* Użyj zmiennej z globalnego CSS */
+    color: var(--color-text-light); /* Użyj zmiennej z globalnego CSS */
+    overflow-x: hidden; /* Zapobieganie poziomemu przewijaniu */
+}
+
+/* Układ główny strony Learn */
+.main-layout-container {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1500px; /* Zwiększ max-width dla lepszego widoku */
+    margin: 30px auto;
+    align-items: flex-start;
+}
+
+/* Glass Card Effect */
+.glass-card {
+    background-color: rgba(28, 31, 43, 0.7); /* Slightly more transparent */
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 25px;
+    color: var(--color-white);
+}
+
+/* Side Panel */
+.side-panel {
+    flex: 0 0 280px; /* Fixed width for sidebar */
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: sticky; /* Sticky sidebar */
+    top: 90px; /* Adjust based on your nav height */
+    height: calc(100vh - 120px); /* Adjust height to fit viewport */
+    overflow-y: auto; /* Scrollable if content overflows */
+}
+
+.side-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.side-panel::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary-dark);
+    border-radius: 10px;
+}
+
+.side-panel::-webkit-scrollbar-track {
+    background-color: var(--color-dark-alt);
+}
+
+
+.logo-and-balance {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-and-balance .logo img {
+    max-width: 150px;
+    margin: 0 auto 15px auto;
+}
+
+.user-balance span {
+    font-size: 0.9rem;
+    color: var(--color-text-darker);
+}
+
+.user-balance p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-top: 5px;
+}
+
+.side-nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.side-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: var(--color-text-lighter);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.side-nav-item i {
+    font-size: 1.6rem;
+    color: var(--color-primary-light);
+}
+
+.side-nav-item:hover,
+.side-nav-item.active {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.side-nav-item:hover i,
+.side-nav-item.active i {
+    color: var(--color-white);
+}
+
+.my-courses-toggle {
+    justify-content: space-between;
+}
+
+.my-courses-toggle .arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.my-courses-toggle .arrow-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.my-courses-dropdown {
+    display: none; /* Ukryte domyślnie */
+    flex-direction: column;
+    padding-left: 30px;
+    gap: 5px;
+    overflow: hidden;
+}
+
+.my-courses-dropdown.active {
+    display: flex; /* Pokaż po kliknięciu */
+}
+
+.course-item {
+    padding: 8px 15px;
+    border-radius: 8px;
+    color: var(--color-text-darker);
+    font-size: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.course-item:hover,
+.course-item.active {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-white);
+}
+
+
+/* WhatsApp Card */
+.whatsapp-card {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Push to bottom */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: none;
+}
+
+.whatsapp-card .whatsapp-icon {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.whatsapp-card p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.whatsapp-card span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-bottom: 15px;
+}
+
+.whatsapp-card .whatsapp-btn {
+    background-color: #fff;
+    color: #128C7E;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.whatsapp-card .whatsapp-btn:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Course Content Area (Main Content) */
+.course-content-area {
+    flex-grow: 1; /* Allow to take remaining space */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Course Hero Section */
+.course-hero-section {
+    background: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary-light));
+    padding: 30px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--color-white);
+}
+
+/* Gradient background for course hero (example, match your classes) */
+.gradient-web-development { background-image: linear-gradient(45deg, #6B6BFF, #7AA0FF); }
+.gradient-python-basics { background-image: linear-gradient(45deg, #FFD700, #FFA500); }
+.gradient-javascript-advanced { background-image: linear-gradient(45deg, #FF6B6B, #FFA07A); }
+/* Add more as needed */
+
+
+.course-tabs {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+.course-tabs span {
+    font-size: 0.9rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.course-tabs .active-tab {
+    background-color: var(--color-secondary);
+}
+
+.course-tabs .lesson-count {
+    background-color: var(--color-dark-alt);
+}
+
+.course-tabs .language-selector {
+    background-color: var(--color-dark-alt);
+    color: var(--color-white);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    appearance: none; /* Remove default arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+.course-tabs .language-selector option {
+    background-color: var(--color-dark-alt);
+    color: var(--color-white);
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.header-icons i {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.header-icons i:hover {
+    color: var(--color-secondary);
+    transform: scale(1.1);
+}
+
+.course-main-title {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.course-completion-status {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.completion-bar-wrapper {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    height: 18px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.completion-bar {
+    height: 100%;
+    background-color: var(--color-white);
+    border-radius: 15px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Modules Section */
+.modules-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.module-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.module-navigation .nav-button {
+    background-color: var(--color-dark-alt);
+    color: var(--color-text-light);
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.module-navigation .nav-button:hover {
+    background-color: var(--color-dark-alt-lighter);
+    color: var(--color-white);
+}
+
+.module-navigation .nav-button.active {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.module-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    min-height: 220px; /* Ensure cards have a minimum height */
+    overflow: hidden;
+    color: var(--color-white);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.module-card .module-status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-white);
+}
+
+.module-card .module-status i {
+    font-size: 1.1rem;
+}
+
+.module-card .module-status.completed {
+    background-color: rgba(76, 175, 80, 0.8); /* Zielony */
+}
+
+.module-card .module-status.in_progress {
+    background-color: rgba(255, 193, 7, 0.8); /* Pomarańczowy */
+}
+
+.module-card .module-status.not_started {
+    background-color: rgba(158, 158, 158, 0.8); /* Szary */
+}
+
+.module-card h3 {
+    font-size: 1.8rem;
+    margin-top: 20px; /* Adjust spacing from status */
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.module-card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+}
+
+.module-completion-bar-wrapper {
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+    margin-top: auto; /* Push bar to bottom */
+}
+
+.module-completion-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-primary-light));
+    border-radius: 10px;
+    transition: width 0.4s ease-in-out;
+}
+
+/* No Courses Message */
+.no-courses-message {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.4rem;
+    color: var(--color-text-light);
+    background-color: var(--color-dark-alt-lighter);
+}
+
+
+/* === MEDIA QUERIES === */
+
+/* EKRANY PONIŻEJ 1200px (np. mniejsze laptopy) */
+@media (max-width: 1200px) {
+    .main-layout-container {
+        flex-direction: column;
+        padding: 20px;
+        margin: 20px auto;
+        gap: 20px;
+    }
+
+    .side-panel {
+        position: static; /* Remove sticky */
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .side-panel .logo-and-balance {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .side-panel .logo img {
+        margin: 0;
+    }
+
+    .side-panel .user-balance {
+        text-align: left;
+    }
+
+    .side-nav-items {
+        flex-direction: row; /* Horizontal for smaller screens */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+
+    .side-nav-item {
+        flex-grow: 1; /* Allow items to grow */
+        max-width: 200px;
+        justify-content: center;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 1rem;
+        gap: 10px;
+    }
+
+    .my-courses-dropdown {
+        width: 100%;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .course-item {
+        padding: 8px 10px;
+    }
+
+    .whatsapp-card {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .course-hero-section {
+        padding: 25px 30px;
+    }
+
+    .course-main-title {
+        font-size: 2.8rem;
+    }
+
+    .course-completion-status {
+        font-size: 1rem;
+    }
+
+    .completion-bar-wrapper {
+        width: 90%;
+    }
+
+    .modules-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* EKRANY PONIŻEJ 768px (Tablety pionowo) */
+@media (max-width: 768px) {
+    .main-layout-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    .side-panel {
+        padding: 15px;
+    }
+
+    .side-panel .logo-and-balance {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .side-panel .user-balance {
+        text-align: center;
+    }
+
+    .side-nav-item {
+        font-size: 0.95rem;
+        padding: 10px 10px;
+        gap: 8px;
+    }
+
+    .side-nav-item i {
+        font-size: 1.4rem;
+    }
+
+    .whatsapp-card {
+        padding: 15px;
+    }
+
+    .whatsapp-card .whatsapp-icon {
+        font-size: 2.5rem;
+    }
+
+    .whatsapp-card p {
+        font-size: 1rem;
+    }
+
+    .whatsapp-card span {
+        font-size: 0.85rem;
+    }
+
+    .whatsapp-card .whatsapp-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .course-hero-section {
+        padding: 20px 25px;
+    }
+
+    .course-tabs {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .course-main-title {
+        font-size: 2.2rem;
+    }
+
+    .course-completion-status {
+        font-size: 0.9rem;
+    }
+
+    .module-navigation {
+        gap: 10px;
+    }
+
+    .module-navigation .nav-button {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+
+    .modules-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .module-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .module-card p {
+        font-size: 0.9rem;
+    }
+
+    .no-courses-message {
+        padding: 30px;
+        font-size: 1.2rem;
+    }
+}
+
+/* EKRANY PONIŻEJ 480px (Telefony komórkowe) */
+@media (max-width: 480px) {
+    .main-layout-container {
+        padding: 10px;
+        margin: 10px auto;
+        gap: 15px;
+    }
+
+    .side-panel {
+        padding: 10px;
+    }
+
+    .side-panel .logo-and-balance {
+        gap: 5px;
+    }
+
+    .side-panel .logo img {
+        max-width: 120px;
+    }
+
+    .user-balance p {
+        font-size: 1.2rem;
+    }
+
+    .side-nav-items {
+        gap: 5px;
+    }
+
+    .side-nav-item {
+        font-size: 0.85rem;
+        padding: 8px 8px;
+        gap: 5px;
+        width: auto; /* Allow natural width */
+    }
+
+    .side-nav-item i {
+        font-size: 1.2rem;
+    }
+
+    .whatsapp-card {
+        padding: 10px;
+    }
+
+    .whatsapp-card .whatsapp-icon {
+        font-size: 2rem;
+    }
+
+    .whatsapp-card p {
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-card span {
+        font-size: 0.75rem;
+    }
+
+    .whatsapp-card .whatsapp-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .course-hero-section {
+        padding: 15px 20px;
+    }
+
+    .course-main-title {
+        font-size: 1.8rem;
+    }
+
+    .course-completion-status {
+        font-size: 0.8rem;
+    }
+
+    .completion-bar-wrapper {
+        height: 15px;
+    }
+
+    .module-navigation {
+        flex-direction: column; /* Stack buttons */
+    }
+
+    .module-navigation .nav-button {
+        width: 100%; /* Full width buttons */
+        max-width: 250px;
+    }
+
+    .module-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .module-card p {
+        font-size: 0.8rem;
+    }
+
+    .no-courses-message {
+        padding: 20px;
+        font-size: 1rem;
+    }
+}

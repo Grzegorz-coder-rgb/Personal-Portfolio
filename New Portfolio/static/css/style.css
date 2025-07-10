@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+:root {
+    --color-background-dark: #000;
+    --color-card-background: #1c1f2b;
+    --color-dark-alt: #16213e; /* Lekko inny odcień ciemnego tła */
+    --color-dark-alt-lighter: #1f2a48; /* Jaśniejszy odcień ciemnego tła */
+
+    --color-primary: #5e3bee; /* Twój główny akcent (fioletowy) */
+    --color-primary-dark: #4d2add; /* Ciemniejszy odcień primary */
+    --color-primary-light: #7e6afb; /* Jaśniejszy odcień primary */
+
+    --color-secondary: #00cec9; /* Nowy kolor akcentujący (turkusowy) dla progress barów itp. */
+    --color-secondary-dark: #00b0a8;
+
+    --color-button-background: #0044ff; /* Niebieski przycisk */
+    --color-white: #fff;
+    --color-text-light: #ccc; /* Jasnoszary tekst */
+    --color-text-lighter: #e0e0e0;
+    --color-text-darker: #aaaaaa; /* Ciemniejszy jasnoszary */
+}
+
 *{
     margin: 0;
     padding: 0;

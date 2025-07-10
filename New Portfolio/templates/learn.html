@@ -6,7 +6,10 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <title>{{ active_course.name if active_course else 'Moje Kursy' }} - GregAcademy</title> <link rel="stylesheet" href="{{ url_for('static', filename='css/learn.css') }}">
+    <title>GregAcademy</title>
+    {# WAŻNE: Najpierw ładujemy globalny style.css, potem learn.css #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/learn.css') }}">
 </head>
 <body>
 
@@ -22,7 +25,7 @@
                 <li><a href="{{ url_for('logout') }}">Wyloguj ({{ session.get('username') }})</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Logowanie</a></li>
-                {% endif %}
+            {% endif %}
             <button class="btn" onclick="window.location.href='{{ url_for('hire') }}';">Hire Me!</button>
         </ul>
     </nav>
@@ -31,7 +34,8 @@
         <aside class="side-panel glass-card">
             <div class="logo-and-balance">
                 <div class="logo">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="GregAcademy Logo"> </div>
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="GregAcademy Logo">
+                </div>
                 <div class="user-balance">
                     <span>Saldo</span>
                     <p>{{ lessons_balance }} lekcji</p>
@@ -110,7 +114,7 @@
                                 <h3>{{ module.title }}</h3>
                                 <p>Ukończono {{ module.lessons_completed }} z {{ module.total_lessons }} lekcji</p>
                                 <div class="module-completion-bar-wrapper">
-                                    <div class="module-completion-bar" style="width: {{ (module.lessons_completed / module.total_lessons * 100) | int }}%;"></div>
+                                    <div class="module-completion-bar" style="width: {{ (module.lessons_completed / module.total_lessons * 100) | int if module.total_lessons > 0 else 0 }}%;"></div>
                                 </div>
                             </div>
                         {% endfor %}
@@ -125,7 +129,8 @@
     <footer class="container">
         <div class="column">
             <div class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo GregAcademy"> </div>
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo GregAcademy">
+            </div>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>

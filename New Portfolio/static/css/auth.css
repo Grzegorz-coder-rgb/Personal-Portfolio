@@ -1,0 +1,214 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Użyj czcionki Poppins lub innej wybranej przez siebie */
+    background: linear-gradient(135deg, #0f0f1a, #1a1a2e); /* Ciemny, subtelny gradient tła */
+    color: #e0e0e0; /* Jasny kolor tekstu dla kontrastu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Pełna wysokość widoku */
+    overflow: hidden; /* Ukryj ewentualne paski przewijania */
+}
+
+/* Auth Container - Centrowanie i podstawowe ustawienia */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px; /* Lekkie wewnętrzne marginesy */
+    box-sizing: border-box; /* Model pudełkowy */
+}
+
+/* Glass Card - Podstawowy styl dla kart glassmorphism */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08); /* Przezroczyste białe tło */
+    border-radius: 15px; /* Zaokrąglone rogi */
+    backdrop-filter: blur(10px); /* Efekt rozmycia za kartą */
+    -webkit-backdrop-filter: blur(10px); /* Wsparcie dla przeglądarek WebKit */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Subtelna ramka */
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3); /* Cień dla głębi */
+    padding: 40px; /* Wewnętrzne marginesy */
+    max-width: 450px; /* Maksymalna szerokość karty */
+    width: 100%; /* Rozciągnij na całą dostępną szerokość */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Auth Card Specific Styles */
+.auth-card {
+    animation: fadeIn 0.8s ease-out; /* Animacja pojawiania się */
+}
+
+.auth-card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #f0f0f0;
+    background: linear-gradient(90deg, #007bff, #8a2be2); /* Gradient dla tytułu */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+
+/* Form Group - Etykiety i pola wejściowe */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Wyrównaj etykiety i pola do lewej */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #c0c0c0; /* Jasnoszary kolor etykiet */
+    font-weight: 500;
+}
+
+.form-group label i {
+    margin-right: 8px; /* Ikony przed etykietą */
+    vertical-align: middle;
+    font-size: 1.1rem;
+    color: #8a2be2; /* Kolor ikon pasujący do gradientu */
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Lekka ramka */
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.2); /* Ciemniejsze, lekko przezroczyste tło pola */
+    color: #f0f0f0;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2); /* Wewnętrzny cień */
+    box-sizing: border-box; /* Ważne, aby padding nie zwiększał szerokości */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus {
+    outline: none;
+    border-color: #8a2be2; /* Podświetlenie ramki przy fokusie */
+    background-color: rgba(0, 0, 0, 0.3); /* Nieco ciemniejsze tło przy fokusie */
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3); /* Ciekawe podświetlenie */
+}
+
+/* Placeholders */
+.form-group input::placeholder {
+    color: #a0a0a0;
+    opacity: 0.8;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Odstęp między tekstem a ikoną, jeśli jest */
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #007bff, #8a2be2); /* Gradient dla przycisku */
+    color: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%; /* Pełna szerokość przycisku logowania */
+    text-decoration: none; /* Usuwa podkreślenie z linków, jeśli używasz <a class="btn"> */
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #0066cc, #7b24cc); /* Ciemniejszy gradient na hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.auth-card .btn-link {
+    display: block; /* Każdy link w nowej linii */
+    margin-top: 15px;
+    color: #90ee90; /* Jaśniejszy kolor dla linków */
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-card .btn-link:hover {
+    color: #7ccc7c; /* Ciemniejszy kolor na hover */
+    text-decoration: underline;
+}
+
+
+/* Flash Messages */
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.flashes li {
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flashes li.error {
+    color: #ffcccc; /* Czerwony dla błędów */
+    background-color: rgba(255, 0, 0, 0.2);
+    border-color: rgba(255, 0, 0, 0.4);
+}
+
+.flashes li.success {
+    color: #ccffcc; /* Zielony dla sukcesów */
+    background-color: rgba(0, 255, 0, 0.2);
+    border-color: rgba(0, 255, 0, 0.4);
+}
+
+.flashes li.warning {
+    color: #ffe0b3; /* Pomarańczowy dla ostrzeżeń */
+    background-color: rgba(255, 165, 0, 0.2);
+    border-color: rgba(255, 165, 0, 0.4);
+}
+
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .auth-card {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .auth-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

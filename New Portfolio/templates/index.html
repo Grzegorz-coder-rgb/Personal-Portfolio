@@ -18,8 +18,8 @@
       <li><a href="#courses">Courses</a></li>
       <li><a href="#projects">My Projects</a></li>
       <li><a href="#feedback">Feedback</a></li>
-      <button class="btn" onclick="window.location.href='hire.html';">Hire Me!</button>
-      <button class="btn" onclick="window.location.href='learn.html';">Learning Platform!</button>
+      <button class="btn" onclick="window.location.href='{{ url_for('hire') }}';">Hire Me!</button>
+      <button class="btn" onclick="window.location.href='{{ url_for('learn') }}';">Learning Platform!</button>
     </ul>
   </nav>
 
@@ -34,7 +34,7 @@
         temporibus ipsum distinctio numquam ut omnis placeat, nam sint atque quos dolorem laborum? Rerum, esse
         dolorem.
       </p>
-      <button class="btn" onclick="window.location.href='hire.html';">Get Started</button>
+      <button class="btn" onclick="window.location.href='{{ url_for('hire') }}';">Get Started!</button>
     </div>
     <div class="image">
       <img src="{{ url_for('static', filename='images/header.png') }}">
@@ -68,7 +68,7 @@
         <h4>0$</h4>
         <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
         <p><i class="ri-checkbox-circle-line"></i> At home Workouts</p>
-        <button class="btn" onclick="window.location.href='plan.html';">Join Now</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('plan') }}';">Join Now!</button>
       </div>
 
       <div class="card">
@@ -77,7 +77,7 @@
         <p><i class="ri-checkbox-circle-line"></i> Free tutorials on my channel</p>
         <p><i class="ri-checkbox-circle-line"></i> At home Workouts</p>
         <p><i class="ri-checkbox-circle-line"></i>Pro codes</p>
-        <button class="btn" onclick="window.location.href='plan.html';">Join Now</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('plan') }}';">Join Now!</button>
       </div>
 
       <div class="card">
@@ -88,7 +88,7 @@
         <p><i class="ri-checkbox-circle-line"></i>Pro Codes</p>
         <p><i class="ri-checkbox-circle-line"></i>Your own projects</p>
         <p><i class="ri-checkbox-circle-line"></i>Proffesional coaching</p>
-        <button class="btn" onclick="window.location.href='plan.html';">Join Now</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('plan') }}';">Join Now!</button>
       </div>
     </div>
   </article>
@@ -158,7 +158,7 @@
             <i class="devicon-github-original colored"></i>
             <span>GitHub</span>
         </div>
-        <button class="btn" onclick="window.location.href='full.html';">View More</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('full') }}';">View More!</button>
     </div>
 
     <div class="course-card">
@@ -183,7 +183,7 @@
             <i class="devicon-github-original colored"></i>
             <span>GitHub</span>
         </div>
-        <button class="btn" onclick="window.location.href='python.html';">View More</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('python') }}';">View More!</button>
     </div>
 
     <div class="course-card">
@@ -221,7 +221,7 @@
             <i class="devicon-github-original colored"></i>
             <span>GitHub</span>
         </div>
-        <button class="btn" onclick="window.location.href='frontend.html';">View More</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('frontend') }}';">View More!</button>
     </div>
 
     <div class="course-card">
@@ -259,7 +259,7 @@
             <i class="devicon-github-original colored"></i>
             <span>GitHub</span>
         </div>
-        <button class="btn" onclick="window.location.href='backend.html';">View More</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('backend') }}';">View More!</button>
     </div>
 
     <div class="course-card">
@@ -305,7 +305,7 @@
             <i class="devicon-github-original colored"></i>
             <span>GitHub</span>
         </div>
-        <button class="btn" onclick="window.location.href='AI.html';">View More</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('AI') }}';">View More!</button>
     </div>
 
 </section>
@@ -322,28 +322,28 @@
         <p>It's <span>Ultimate</span> game of name "Three Games" 
           in witch you can select and change your game. You have got a <span class="pgz">Shooter</span> <span class="pgz">Runner</span> and <span class="pgz">Clicker</span>.
         </p>
-        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button> 
+        <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
 
       <div class="project-item"> 
         <h3>Pong Game</h3>
         <h4>1$</h4>
         <p>It's game in witch you must bounce the ball and play with AI.</p>
-        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
 
       <div class="project-item"> 
         <h3>XO-game</h3>
         <h4>1$</h4>
         <p>It's simple XO-game. You can play it with your friend.</p>
-        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
 
       <div class="project-item"> 
         <h3>Weather App</h3>
         <h4>2$</h4>
         <p>It's a app in witch you can check weather in your place.</p>
-        <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+        <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
     </div>
     <div class="projects-bottom">
@@ -351,28 +351,28 @@
           <h3>To-Do List App</h3>
           <h4>1.5$</h4>
           <p>A simple yet effective to-do list application to keep track of your tasks.</p>
-          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+          <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
 
       <div class="project-item">
           <h3>Basic Calculator</h3>
           <h4>0.5$</h4>
           <p>A functional calculator for basic arithmetic operations built with Python.</p>
-          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+          <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
 
       <div class="project-item">
           <h3>E-commerce Product Page</h3>
           <h4>3$</h4>
           <p>A responsive e-commerce product page template using HTML, CSS, and JavaScript.</p>
-          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+          <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
 
       <div class="project-item">
           <h3>Landing Page Template</h3>
           <h4>2.5$</h4>
           <p>A modern and clean landing page template suitable for various businesses.</p>
-          <button class="btn" onclick="window.location.href='projects.html';">Buy Now</button>
+          <button class="btn" onclick="window.location.href='{{ url_for('projects') }}';">Buy Now!</button>
       </div>
     </div>
   </div>
