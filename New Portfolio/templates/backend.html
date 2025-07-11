@@ -23,6 +23,8 @@
         </ul>
     </nav>
 
+    <div class="blur"></div>
+
     <main class="container">
         <h2 class="section-header text-center">Backend Developer</h2>
 
@@ -34,7 +36,8 @@
                 </p>
                 <div class="course-price-area">
                     <span class="price">2800zł</span>
-                    <a href="#contact" class="btn enroll-btn"><i class="ri-arrow-right-line"></i> Zapisz się na kurs</a>
+                    {# Zmieniono akcję przycisku "Zapisz się teraz!" na przekierowanie do hire.html #}
+                    <button class="btn" onclick="window.location.href='{{ url_for('hire') }}';">Zapisz się teraz!</button>
                 </div>
                 <div class="technologies-used">
                     <h4>Wykorzystywane technologie:</h4>
@@ -105,7 +108,8 @@
 
         <div class="call-to-action text-center">
             <p>Zbuduj silny fundament swojej kariery w backendzie!</p>
-            <a href="#contact" class="btn enroll-btn">Zapisz się teraz!</a>
+            {# Zmieniono akcję przycisku "Zapisz się teraz!" na przekierowanie do hire.html #}
+            <a href="{{ url_for('hire') }}" class="btn enroll-btn">Zapisz się teraz!</a>
         </div>
     </main>
 

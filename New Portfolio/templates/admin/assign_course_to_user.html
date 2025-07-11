@@ -1,0 +1,58 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Dostęp do kursów dla {{ user.username }}{% endblock %}
+{% block page_title %}Zarządzanie Dostępem do Kursów dla: {{ user.username }}{% endblock %}
+
+{% block content %}
+    <div class="admin-card">
+        <h3>Przypisz kurs:</h3>
+        <form method="POST" action="{{ url_for('admin_assign_course_to_user', user_id=user.id) }}" class="form-inline">
+            <div class="form-group">
+                <label for="course_id">Wybierz kurs:</label>
+                <select id="course_id" name="course_id" required>
+                    <option value="">-- Wybierz kurs --</option>
+                    {% for course in all_courses %}
+                        {% if course.id not in user_assigned_course_ids %}
+                            <option value="{{ course.id }}">{{ course.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn-primary">Przypisz Dostęp</button>
+        </form>
+    </div>
+
+    <div class="admin-card" style="margin-top: 25px;">
+        <h3>Obecny dostęp do kursów:</h3>
+        {% if user.course_accesses %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Kursu</th>
+                        <th>Nazwa Kursu</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for access in user.course_accesses %}
+                    <tr>
+                        <td>{{ access.course.id }}</td>
+                        <td>{{ access.course.name }}</td>
+                        <td>
+                            <form action="{{ url_for('admin_revoke_course_from_user', user_id=user.id, course_id=access.course.id) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz odebrać dostęp do tego kursu?');" style="display:inline;">
+                                <button type="submit" class="btn-action delete">Odbierz Dostęp</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Użytkownik nie ma dostępu do żadnych kursów.</p>
+        {% endif %}
+    </div>
+
+    <div class="form-actions" style="margin-top: 25px;">
+        <a href="{{ url_for('admin_users') }}" class="btn-secondary">Wróć do listy użytkowników</a>
+    </div>
+{% endblock %}

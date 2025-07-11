@@ -1,0 +1,49 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Użytkownicy{% endblock %}
+{% block page_title %}Zarządzanie Użytkownikami{% endblock %}
+
+{% block content %}
+    <div class="admin-actions-bar">
+        <a href="{{ url_for('admin_add_user') }}" class="btn-primary"><i class="ri-add-line"></i> Dodaj Użytkownika</a>
+    </div>
+
+    <div class="admin-table-container admin-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa Użytkownika</th>
+                    <th>Email</th>
+                    <th>Rola</th>
+                    <th>Saldo Lekcji</th>
+                    <th>Data Utworzenia</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><span class="badge {{ user.role }}">{{ user.role }}</span></td>
+                    <td>{{ user.lessons_balance }}</td>
+                    <td>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td class="table-actions">
+                        <a href="{{ url_for('admin_edit_user', user_id=user.id) }}" class="btn-action edit"><i class="ri-edit-line"></i> Edytuj</a>
+                        <a href="{{ url_for('admin_assign_course_to_user', user_id=user.id) }}" class="btn-action assign"><i class="ri-book-mark-line"></i> Dostęp do kursów</a>
+                        <form action="{{ url_for('admin_delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć tego użytkownika?');" style="display:inline;">
+                            <button type="submit" class="btn-action delete"><i class="ri-delete-bin-line"></i> Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="7">Brak użytkowników.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

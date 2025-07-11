@@ -1,0 +1,35 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Edytuj Moduł{% endblock %}
+{% block page_title %}Edytuj Moduł: {{ module.title }}{% endblock %}
+
+{% block content %}
+    <div class="admin-form-container admin-card">
+        <form method="POST" action="{{ url_for('admin_edit_module', module_id=module.id) }}">
+            <div class="form-group">
+                <label for="title">Tytuł Modułu:</label>
+                <input type="text" id="title" name="title" value="{{ module.title }}" required>
+            </div>
+            <div class="form-group">
+                <label for="course_id">Wybierz Kurs:</label>
+                <select id="course_id" name="course_id" required>
+                    {% for course in courses %}
+                        <option value="{{ course.id }}" {% if module.course_id == course.id %}selected{% endif %}>{{ course.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="order">Kolejność (numer):</label>
+                <input type="number" id="order" name="order" value="{{ module.order }}" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="gradient_class">Klasa CSS dla Gradientu (opcjonalnie):</label>
+                <input type="text" id="gradient_class" name="gradient_class" value="{{ module.gradient_class }}" placeholder="np. module-gradient-green">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Zapisz Zmiany</button>
+                <a href="{{ url_for('admin_modules') }}" class="btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

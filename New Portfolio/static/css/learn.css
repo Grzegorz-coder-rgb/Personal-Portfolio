@@ -1,129 +1,341 @@
+/* learn.css - Całkowicie nowy plik CSS */
 
+/* --- 1. Zmienne Kolorów (możesz dostosować) --- */
 :root {
-    --color-background-dark: #000;
-    --color-card-background: #1c1f2b;
-    --color-dark-alt: #16213e;
-    --color-dark-alt-lighter: #1f2a48;
-    --color-primary: #5e3bee;
-    --color-primary-dark: #4d2add;
-    --color-primary-light: #7e6afb;
-    --color-secondary: #00cec9;
-    --color-secondary-dark: #00b0a8;
-    --color-button-background: #0044ff;
-    --color-white: #fff;
-    --color-text-light: #ccc;
-    --color-text-lighter: #e0e0e0;
-    --color-text-darker: #aaaaaa;
+    /* Główny schemat kolorów */
+    --color-primary: #5e3bee;          /* Główny kolor akcentu (fioletowy) */
+    --color-primary-dark: #4b2edf;     /* Ciemniejszy odcień primary */
+    --color-primary-light: #7c5bff;    /* Jaśniejszy odcień primary */
+    --color-secondary: #00bcd4;        /* Drugi kolor akcentu (turkusowy) */
+    --color-secondary-dark: #0097a7;   /* Ciemniejszy odcień secondary */
+    --color-secondary-light: #33e1ff;  /* Jaśniejszy odcień secondary */
+
+    /* Tła i tekst */
+    --color-background-dark: #1a1e2a; /* Bardzo ciemne tło */
+    --color-background-medium: #222736; /* Trochę jaśniejsze tło */
+    --color-dark-alt: #1c1f2b;         /* Ciemniejszy odcień dla niektórych kart/elementów */
+
+    --color-text-light: #e0e0e0;       /* Jasny tekst */
+    --color-text-lighter: #b0b0b0;     /* Jaśniejszy tekst (paragrafy) */
+    --color-text-darker: #888888;      /* Ciemniejszy tekst (szczegóły, opisy) */
+    --color-white: #ffffff;            /* Czysta biel */
+    --color-black: #000000;            /* Czysta czerń */
+
+    /* Stany statusów */
+    --color-status-completed: #8BC34A;   /* Zieleń dla ukończonych */
+    --color-status-in-progress: #FFC107; /* Żółty dla w trakcie */
+    --color-status-not-started: #9E9E9E; /* Szary dla nie rozpoczętych */
+
+    /* Glassmorphism base properties */
+    --glass-bg-color: rgba(28, 31, 43, 0.7);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-backdrop-filter: blur(10px);
+
+    /* Gradients for module cards (example set, adjust as needed) */
+    --gradient-python-1: linear-gradient(135deg, #FF6F61 0%, #E65A4F 100%);
+    --gradient-python-2: linear-gradient(135deg, #6B5B95 0%, #88B04B 100%);
+    --gradient-python-3: linear-gradient(135deg, #845EC2 0%, #D65DB1 100%);
+    --gradient-python-4: linear-gradient(135deg, #008F7A 0%, #00C2A0 100%);
+
+    --gradient-fullstack-1: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    --gradient-fullstack-2: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+    --gradient-fullstack-3: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
+    --gradient-fullstack-4: linear-gradient(135deg, #FF5722 0%, #E64A19 100%);
+
+    --gradient-aiml-1: linear-gradient(135deg, #F06292 0%, #E91E63 100%);
+    --gradient-aiml-2: linear-gradient(135deg, #4DD0E1 0%, #00BCD4 100%);
+    --gradient-aiml-3: linear-gradient(135deg, #81C784 0%, #4CAF50 100%);
+    --gradient-aiml-4: linear-gradient(135deg, #BA68C8 0%, #9C27B0 100%);
+
+    --gradient-frontend-1: linear-gradient(135deg, #FFB74D 0%, #FF9800 100%);
+    --gradient-frontend-2: linear-gradient(135deg, #A7FFEB 0%, #64FFDA 100%);
+    --gradient-frontend-3: linear-gradient(135deg, #BBDEFB 0%, #90CAF9 100%);
+    --gradient-frontend-4: linear-gradient(135deg, #F8BBD0 0%, #F48FB1 100%);
+
+    /* Course Hero Gradients */
+    --course-gradient-python: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    --course-gradient-fullstack: linear-gradient(135deg, #1A237E 0%, #0D47A1 100%);
+    --course-gradient-aiml: linear-gradient(135deg, #880E4F 0%, #C2185B 100%);
+    --course-gradient-frontend: linear-gradient(135deg, #FF6F00 0%, #FFA000 100%);
 }
 
-/* Nowe ogólne style dla Learn Page */
+/* --- 2. Resetowanie CSS i Podstawowe Style --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--color-background-dark); /* Użyj zmiennej z globalnego CSS */
-    color: var(--color-text-light); /* Użyj zmiennej z globalnego CSS */
-    overflow-x: hidden; /* Zapobieganie poziomemu przewijaniu */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Zapobiega poziomemu przewijaniu */
 }
 
-/* Układ główny strony Learn */
-.main-layout-container {
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary-dark);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--color-dark-alt);
+}
+
+/* Global button style (używane przez .nav-btn, .whatsapp-btn, .lesson-navigation-buttons .btn) */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-block; /* For better padding/sizing */
+    cursor: pointer;
+}
+
+/* --- 3. Glassmorphism Base Class --- */
+.glass-card {
+    background-color: var(--glass-bg-color);
+    border-radius: 15px;
+    backdrop-filter: var(--glass-backdrop-filter);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 25px;
+    color: var(--color-white);
+    transition: all 0.3s ease;
+    overflow: hidden; /* Dla gradientów / cieni wewnętrznych */
+}
+
+/* --- 4. Main Navigation (przeniesione z poprzedniego style.css założenia) --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgba(28, 31, 43, 0.85); /* Lekko przezroczyste tło */
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.main-nav .nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav .nav-link {
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.main-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-link:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.main-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+.main-nav .nav-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.main-nav .login-btn {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 8px 18px; /* Override btn padding for smaller size */
+}
+
+.main-nav .login-btn:hover {
+    background-color: var(--color-secondary-dark);
+    transform: translateY(-2px);
+}
+
+.main-nav .logout-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 18px; /* Override btn padding */
+}
+
+.main-nav .logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.main-nav .hire-btn {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px 18px; /* Override btn padding */
+}
+
+.main-nav .hire-btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* --- 5. Główny układ Learn Page --- */
+.learn-main-layout-container {
     display: flex;
     gap: 30px;
     padding: 30px;
-    max-width: 1500px; /* Zwiększ max-width dla lepszego widoku */
+    max-width: 1600px;
     margin: 30px auto;
     align-items: flex-start;
 }
 
-/* Glass Card Effect */
-.glass-card {
-    background-color: rgba(28, 31, 43, 0.7); /* Slightly more transparent */
-    border-radius: 15px;
-    backdrop-filter: blur(10px); /* Blur effect */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    padding: 25px;
-    color: var(--color-white);
-}
-
-/* Side Panel */
+/* --- 6. Panel Boczny (Side Panel) --- */
 .side-panel {
-    flex: 0 0 280px; /* Fixed width for sidebar */
+    flex: 0 0 280px; /* Stała szerokość */
     min-width: 280px;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    position: sticky; /* Sticky sidebar */
-    top: 90px; /* Adjust based on your nav height */
-    height: calc(100vh - 120px); /* Adjust height to fit viewport */
-    overflow-y: auto; /* Scrollable if content overflows */
+    position: sticky;
+    top: calc(15px + 70px); /* Odległość od góry uwzględniająca nawigację */
+    height: calc(100vh - (30px + 30px + 70px)); /* Wysokość viewport - (paddingi + wysokość nav) */
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 20px;
 }
-
-.side-panel::-webkit-scrollbar {
-    width: 8px;
-}
-
-.side-panel::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary-dark);
-    border-radius: 10px;
-}
-
-.side-panel::-webkit-scrollbar-track {
-    background-color: var(--color-dark-alt);
-}
-
 
 .logo-and-balance {
     text-align: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .logo-and-balance .logo img {
-    max-width: 150px;
+    max-width: 140px;
     margin: 0 auto 15px auto;
 }
 
 .user-balance span {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--color-text-darker);
+    display: block;
+    margin-bottom: 3px;
 }
 
 .user-balance p {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--color-secondary);
-    margin-top: 5px;
+    letter-spacing: 0.5px;
 }
 
 .side-nav-items {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .side-nav-item {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 12px 20px;
-    border-radius: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
     color: var(--color-text-lighter);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 500;
     transition: all 0.3s ease;
     text-decoration: none;
     cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Ważne dla :before */
+}
+
+.side-nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(94, 59, 238, 0.2) 0%, transparent 100%); /* Użyto wartości RGB z --color-primary */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    z-index: 1; /* Pod ikoną i tekstem */
+}
+
+.side-nav-item:hover::before {
+    transform: translateX(0%);
 }
 
 .side-nav-item i {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: var(--color-primary-light);
+    position: relative; /* Z-index działa tylko na position: relative/absolute/fixed/sticky */
+    z-index: 2; /* Ikona nad efektem hover */
 }
+
+.side-nav-item span { /* Dotyczy tekstu */
+    position: relative; /* Tekst nad efektem hover */
+    z-index: 2;
+}
+
 
 .side-nav-item:hover,
 .side-nav-item.active {
     background-color: var(--color-primary-dark);
     color: var(--color-white);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .side-nav-item:hover i,
@@ -144,612 +356,846 @@ body {
 }
 
 .my-courses-dropdown {
-    display: none; /* Ukryte domyślnie */
-    flex-direction: column;
-    padding-left: 30px;
-    gap: 5px;
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Tylko dla max-height */
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: -5px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .my-courses-dropdown.active {
-    display: flex; /* Pokaż po kliknięciu */
+    max-height: 500px; /* Wystarczająco duża wartość dla rozwijania */
+    padding-top: 5px; /* Dodatkowe paddingi po rozwinięciu */
+    padding-bottom: 5px;
 }
 
 .course-item {
     padding: 8px 15px;
     border-radius: 8px;
-    color: var(--color-text-darker);
-    font-size: 1rem;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
     transition: background-color 0.2s ease, color 0.2s ease;
+    display: block;
 }
 
 .course-item:hover,
 .course-item.active {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 188, 212, 0.25); /* rgba z --color-secondary */
     color: var(--color-white);
+    font-weight: 600;
 }
 
-
-/* WhatsApp Card */
 .whatsapp-card {
-    background: linear-gradient(135deg, #25D366, #128C7E);
+    background-image: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+    padding: 25px;
     border-radius: 15px;
-    padding: 20px;
     text-align: center;
-    margin-top: auto; /* Push to bottom */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-    border: none;
+    color: var(--color-white);
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.whatsapp-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.05); /* Lekkie rozjaśnienie */
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-out;
+    z-index: 0;
+}
+
+.whatsapp-card:hover::before {
+    transform: rotate(0deg);
 }
 
 .whatsapp-card .whatsapp-icon {
-    font-size: 3rem;
-    color: #fff;
-    margin-bottom: 10px;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
 }
 
 .whatsapp-card p {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 5px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
 }
 
 .whatsapp-card span {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    opacity: 0.9;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
 }
 
-.whatsapp-card .whatsapp-btn {
-    background-color: #fff;
-    color: #128C7E;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
+.whatsapp-btn {
+    background-color: var(--color-white);
+    color: #25D366;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
-.whatsapp-card .whatsapp-btn:hover {
-    background-color: #e0e0e0;
-    transform: translateY(-2px);
+.whatsapp-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Course Content Area (Main Content) */
+/* --- 7. Obszar Zawartości Kursu (Course Content Area) --- */
 .course-content-area {
-    flex-grow: 1; /* Allow to take remaining space */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-/* Course Hero Section */
+/* --- 8. Sekcja Nagłówkowa Kursu (Course Hero Section) --- */
 .course-hero-section {
-    background: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary-light));
-    padding: 30px 40px;
-    text-align: center;
+    padding: 35px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
     overflow: hidden;
-    color: var(--color-white);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Gradient background for course hero (example, match your classes) */
-.gradient-web-development { background-image: linear-gradient(45deg, #6B6BFF, #7AA0FF); }
-.gradient-python-basics { background-image: linear-gradient(45deg, #FFD700, #FFA500); }
-.gradient-javascript-advanced { background-image: linear-gradient(45deg, #FF6B6B, #FFA07A); }
-/* Add more as needed */
+/* Dynamiczne gradienty dla Course Hero (odwołania do zmiennych) */
+.course-gradient-python { background-image: var(--course-gradient-python); }
+.course-gradient-fullstack { background-image: var(--course-gradient-fullstack); }
+.course-gradient-aiml { background-image: var(--course-gradient-aiml); }
+.course-gradient-frontend { background-image: var(--course-gradient-frontend); }
 
 
-.course-tabs {
+.course-header-top {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.active-tag {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-white);
+    letter-spacing: 0.5px;
+}
+
+.lesson-progress-summary {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-white);
+    opacity: 0.85;
+}
+
+.header-controls {
+    display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* Allow wrapping */
 }
 
-.course-tabs span {
-    font-size: 0.9rem;
-    padding: 5px 12px;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--color-white);
-    font-weight: 600;
-}
-
-.course-tabs .active-tab {
-    background-color: var(--color-secondary);
-}
-
-.course-tabs .lesson-count {
-    background-color: var(--color-dark-alt);
-}
-
-.course-tabs .language-selector {
-    background-color: var(--color-dark-alt);
-    color: var(--color-white);
+.language-selector {
+    background-color: rgba(255, 255, 255, 0.1);
     border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
+    color: var(--color-white);
+    padding: 7px 12px;
+    border-radius: 10px;
     font-size: 0.9rem;
-    appearance: none; /* Remove default arrow */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    cursor: pointer;
+    -webkit-appearance: none; /* Ukrywa domyślną strzałkę */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 10px center;
-    background-size: 12px;
+    background-size: 16px;
+    padding-right: 30px; /* Miejsce na niestandardową strzałkę */
+    transition: background-color 0.2s ease;
 }
 
-.course-tabs .language-selector option {
-    background-color: var(--color-dark-alt);
+.language-selector:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.language-selector option {
+    background-color: var(--color-dark-alt); /* Tło opcji w dropdownie */
     color: var(--color-white);
 }
 
-.header-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.header-icons i {
-    font-size: 1.5rem;
+.control-icon {
+    font-size: 1.6rem;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
+    opacity: 0.8;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.header-icons i:hover {
-    color: var(--color-secondary);
-    transform: scale(1.1);
+.control-icon:hover {
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 .course-main-title {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.1;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
 }
 
-.course-completion-status {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 20px;
+.course-description {
+    font-size: 1.1rem;
+    color: var(--color-text-lighter);
+    opacity: 0.95;
+    margin-bottom: 25px;
+    line-height: 1.5;
 }
 
 .completion-bar-wrapper {
-    width: 80%;
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    height: 18px;
-    margin: 0 auto;
+    border-radius: 10px;
+    height: 12px;
+    width: 100%;
     overflow: hidden;
+    position: relative;
 }
 
 .completion-bar {
     height: 100%;
-    background-color: var(--color-white);
-    border-radius: 15px;
-    transition: width 0.5s ease-in-out;
+    background-color: var(--color-secondary);
+    border-radius: 10px;
+    transition: width 0.8s ease-out;
 }
 
-/* Modules Section */
-.modules-section {
+/* --- 9. Moduły i Widok Lekcji --- */
+.modules-and-lesson-view {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.modules-list {
+    flex: 0 0 450px;
+    min-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.lesson-view-panel {
+    flex-grow: 1;
+    min-height: 450px;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    overflow-y: auto;
+    position: sticky;
+    top: calc(15px + 70px);
+    height: calc(100vh - (30px + 30px + 70px));
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.lesson-view-panel h2.lesson-current-title {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    line-height: 1.2;
+}
+
+.lesson-content-area {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-lighter);
+    white-space: pre-wrap; /* Zachowuje białe znaki i łamanie linii */
+    flex-grow: 1;
+}
+
+/* Stylowanie nagłówków w treści lekcji */
+.lesson-content-area h1 {
+    font-size: 2em; /* Relatywnie do bazowego font-size */
+    color: var(--color-primary-light);
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.lesson-content-area h2 {
+    font-size: 1.7em;
+    color: var(--color-secondary-light);
+    margin-top: 1.2em;
+    margin-bottom: 0.7em;
+}
+
+.lesson-content-area p {
+    margin-bottom: 1em;
+}
+
+.lesson-content-area ul,
+.lesson-content-area ol {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+.lesson-content-area li {
+    margin-bottom: 0.5em;
+}
+
+.lesson-content-area strong {
+    color: var(--color-white);
+    font-weight: 700;
+}
+
+.lesson-content-area code {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-family: 'Fira Code', 'Monaco', 'Courier New', monospace; /* Monospace font */
+    font-size: 0.9em;
+    color: #ffd700; /* Yellow-ish for code */
+}
+
+.lesson-content-area pre {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lesson-navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.lesson-navigation-buttons .btn {
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+}
+
+.lesson-navigation-buttons .btn:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
 }
 
 .module-navigation {
     display: flex;
-    justify-content: center;
     gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+    padding: 12px;
+    background-color: rgba(28, 31, 43, 0.5);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 15px;
 }
 
 .module-navigation .nav-button {
-    background-color: var(--color-dark-alt);
-    color: var(--color-text-light);
-    padding: 12px 25px;
-    border-radius: 10px;
+    background: none;
     border: none;
-    cursor: pointer;
-    font-size: 1.1rem;
+    padding: 10px 22px;
+    border-radius: 10px;
+    color: var(--color-text-light);
+    font-size: 1rem;
     font-weight: 500;
+    cursor: pointer;
     transition: all 0.3s ease;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .module-navigation .nav-button:hover {
-    background-color: var(--color-dark-alt-lighter);
+    background-color: rgba(255, 255, 255, 0.15);
     color: var(--color-white);
 }
 
 .module-navigation .nav-button.active {
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     color: var(--color-white);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
 }
 
 .modules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .module-card {
-    position: relative;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 25px;
-    min-height: 220px; /* Ensure cards have a minimum height */
+    gap: 10px;
+    position: relative;
     overflow: hidden;
-    color: var(--color-white);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; /* Dodano border-color */
+    cursor: default; /* Karta nie jest bezpośrednio klikalna dla rozwijania */
 }
 
-.module-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+/* Gradienty dla Module Cards (odwołania do zmiennych) */
+.module-gradient-1 { background-image: var(--gradient-python-1); }
+.module-gradient-2 { background-image: var(--gradient-python-2); }
+.module-gradient-3 { background-image: var(--gradient-python-3); }
+.module-gradient-4 { background-image: var(--gradient-python-4); }
+/* Dodaj pozostałe gradienty z sekcji :root, np. */
+/* .module-gradient-fullstack-1 { background-image: var(--gradient-fullstack-1); } */
+/* ... i tak dalej dla wszystkich kursów i modułów */
+
+
+.module-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+    cursor: pointer; /* To jest klikalne do rozwijania */
+    transition: opacity 0.2s ease;
 }
 
-.module-card .module-status {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+.module-header-info:hover {
+    opacity: 0.9;
+}
+
+.module-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.module-status {
     display: flex;
     align-items: center;
-    gap: 5px;
-    color: var(--color-white);
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.9;
 }
 
-.module-card .module-status i {
-    font-size: 1.1rem;
+.module-status i {
+    font-size: 1.3rem;
 }
 
-.module-card .module-status.completed {
-    background-color: rgba(76, 175, 80, 0.8); /* Zielony */
-}
+.module-status.completed { color: var(--color-status-completed); }
+.module-status.completed i { color: var(--color-status-completed); }
 
-.module-card .module-status.in_progress {
-    background-color: rgba(255, 193, 7, 0.8); /* Pomarańczowy */
-}
+.module-status.in_progress { color: var(--color-status-in-progress); }
+.module-status.in_progress i { color: var(--color-status-in-progress); }
 
-.module-card .module-status.not_started {
-    background-color: rgba(158, 158, 158, 0.8); /* Szary */
-}
+.module-status.not_started { color: var(--color-status-not-started); }
+.module-status.not_started i { color: var(--color-status-not-started); }
 
-.module-card h3 {
-    font-size: 1.8rem;
-    margin-top: 20px; /* Adjust spacing from status */
-    margin-bottom: 10px;
-    font-weight: 700;
-    color: var(--color-white);
-}
 
-.module-card p {
+.module-progress-text {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-lighter);
+    opacity: 0.9;
     margin-bottom: 15px;
 }
 
 .module-completion-bar-wrapper {
-    width: 90%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.25);
     border-radius: 10px;
     height: 10px;
+    width: 100%;
     overflow: hidden;
-    margin-top: auto; /* Push bar to bottom */
+    margin-top: 5px;
 }
 
 .module-completion-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--color-secondary), var(--color-primary-light));
+    background-color: var(--color-secondary);
     border-radius: 10px;
-    transition: width 0.4s ease-in-out;
+    transition: width 0.5s ease-out;
 }
 
-/* No Courses Message */
+/* Rozwijane lekcje */
+.module-lessons-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+    padding-top: 0;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.module-lessons-dropdown.active {
+    max-height: 500px; /* Wystarczająco duża wartość */
+}
+
+.lesson-list {
+    padding: 0;
+    margin: 0;
+}
+
+.lesson-item {
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.lesson-item:last-child {
+    margin-bottom: 0;
+}
+
+.lesson-item:hover {
+    transform: translateX(5px);
+}
+
+.lesson-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-lighter);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 10px 15px; /* Trochę większy padding */
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.lesson-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+}
+
+.lesson-icon {
+    font-size: 1.4rem; /* Większa ikona */
+    color: var(--color-secondary);
+}
+
+.lesson-item.active .lesson-link {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-item.active .lesson-link .lesson-icon {
+    color: var(--color-white);
+}
+
 .no-courses-message {
     text-align: center;
     padding: 50px;
-    font-size: 1.4rem;
-    color: var(--color-text-light);
-    background-color: var(--color-dark-alt-lighter);
+    font-size: 1.5rem;
+    color: var(--color-text-darker);
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+/* --- 10. Stopka (minimalne style, zakładając, że jest globalna) --- */
+/* Jeśli stopka ma być w pełni ostylowana, przenieś jej pełne style tutaj */
+footer.container {
+    background-color: var(--color-dark-alt);
+    color: var(--color-text-lighter);
+    padding: 40px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer .column {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+footer .column h4 {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+footer .column a {
+    color: var(--color-text-lighter);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer .column a:hover {
+    color: var(--color-white);
+}
+
+footer .logo img {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+footer .socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+footer .socials a {
+    font-size: 1.8rem;
+    color: var(--color-text-darker);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+footer .socials a:hover {
+    color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-darker);
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 
-/* === MEDIA QUERIES === */
-
-/* EKRANY PONIŻEJ 1200px (np. mniejsze laptopy) */
+/* --- 11. Responsywność --- */
 @media (max-width: 1200px) {
-    .main-layout-container {
+    .learn-main-layout-container {
         flex-direction: column;
         padding: 20px;
         margin: 20px auto;
-        gap: 20px;
+        gap: 25px;
     }
 
     .side-panel {
-        position: static; /* Remove sticky */
-        width: 100%;
+        position: static;
         min-width: unset;
+        width: 100%;
         height: auto;
         overflow-y: visible;
+        padding: 25px;
     }
 
-    .side-panel .logo-and-balance {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        border-bottom: none;
-        padding-bottom: 0;
+    .modules-and-lesson-view {
+        flex-direction: column;
+        gap: 25px;
     }
 
-    .side-panel .logo img {
-        margin: 0;
-    }
-
-    .side-panel .user-balance {
-        text-align: left;
-    }
-
-    .side-nav-items {
-        flex-direction: row; /* Horizontal for smaller screens */
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 20px;
-        margin-top: 20px;
-    }
-
-    .side-nav-item {
-        flex-grow: 1; /* Allow items to grow */
-        max-width: 200px;
-        justify-content: center;
-        text-align: center;
-        padding: 10px 15px;
-        font-size: 1rem;
-        gap: 10px;
-    }
-
-    .my-courses-dropdown {
+    .modules-list {
+        flex: auto;
+        min-width: unset;
         width: 100%;
-        padding-left: 0;
-        text-align: center;
+        padding: 25px;
     }
 
-    .course-item {
-        padding: 8px 10px;
-    }
-
-    .whatsapp-card {
-        margin-top: 20px;
-        width: 100%;
+    .lesson-view-panel {
+        flex: auto;
+        min-height: 400px;
+        position: static;
+        height: auto;
+        overflow-y: visible;
+        padding: 25px;
     }
 
     .course-hero-section {
-        padding: 25px 30px;
+        padding: 25px;
     }
 
     .course-main-title {
-        font-size: 2.8rem;
-    }
-
-    .course-completion-status {
-        font-size: 1rem;
-    }
-
-    .completion-bar-wrapper {
-        width: 90%;
-    }
-
-    .modules-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-}
-
-/* EKRANY PONIŻEJ 768px (Tablety pionowo) */
-@media (max-width: 768px) {
-    .main-layout-container {
-        padding: 15px;
-        margin: 15px auto;
-    }
-
-    .side-panel {
-        padding: 15px;
-    }
-
-    .side-panel .logo-and-balance {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .side-panel .user-balance {
-        text-align: center;
-    }
-
-    .side-nav-item {
-        font-size: 0.95rem;
-        padding: 10px 10px;
-        gap: 8px;
-    }
-
-    .side-nav-item i {
-        font-size: 1.4rem;
-    }
-
-    .whatsapp-card {
-        padding: 15px;
-    }
-
-    .whatsapp-card .whatsapp-icon {
         font-size: 2.5rem;
     }
 
-    .whatsapp-card p {
-        font-size: 1rem;
+    .module-title {
+        font-size: 1.8rem;
     }
-
-    .whatsapp-card span {
-        font-size: 0.85rem;
-    }
-
-    .whatsapp-card .whatsapp-btn {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-
-    .course-hero-section {
-        padding: 20px 25px;
-    }
-
-    .course-tabs {
+    
+    footer.container {
+        padding: 30px 20px;
         flex-direction: column;
-        gap: 10px;
         align-items: center;
+        text-align: center;
     }
 
-    .course-main-title {
-        font-size: 2.2rem;
-    }
-
-    .course-completion-status {
-        font-size: 0.9rem;
-    }
-
-    .module-navigation {
-        gap: 10px;
-    }
-
-    .module-navigation .nav-button {
-        padding: 10px 18px;
-        font-size: 1rem;
-    }
-
-    .modules-grid {
-        grid-template-columns: 1fr; /* Single column on small screens */
-    }
-
-    .module-card h3 {
-        font-size: 1.6rem;
-    }
-
-    .module-card p {
-        font-size: 0.9rem;
-    }
-
-    .no-courses-message {
-        padding: 30px;
-        font-size: 1.2rem;
+    footer .column {
+        max-width: 100%;
+        align-items: center;
+        margin-bottom: 20px;
     }
 }
 
-/* EKRANY PONIŻEJ 480px (Telefony komórkowe) */
-@media (max-width: 480px) {
-    .main-layout-container {
-        padding: 10px;
-        margin: 10px auto;
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 15px;
-    }
-
-    .side-panel {
-        padding: 10px;
-    }
-
-    .side-panel .logo-and-balance {
-        gap: 5px;
-    }
-
-    .side-panel .logo img {
-        max-width: 120px;
-    }
-
-    .user-balance p {
-        font-size: 1.2rem;
-    }
-
-    .side-nav-items {
-        gap: 5px;
-    }
-
-    .side-nav-item {
-        font-size: 0.85rem;
-        padding: 8px 8px;
-        gap: 5px;
-        width: auto; /* Allow natural width */
-    }
-
-    .side-nav-item i {
-        font-size: 1.2rem;
-    }
-
-    .whatsapp-card {
-        padding: 10px;
-    }
-
-    .whatsapp-card .whatsapp-icon {
-        font-size: 2rem;
-    }
-
-    .whatsapp-card p {
-        font-size: 0.9rem;
-    }
-
-    .whatsapp-card span {
-        font-size: 0.75rem;
-    }
-
-    .whatsapp-card .whatsapp-btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
-
-    .course-hero-section {
         padding: 15px 20px;
     }
 
+    .main-nav .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .main-nav .nav-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .main-nav .nav-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .learn-main-layout-container {
+        padding: 15px;
+        margin: 15px auto;
+        gap: 20px;
+    }
+
+    .side-panel {
+        padding: 20px;
+    }
+
+    .course-hero-section {
+        padding: 20px;
+    }
+
     .course-main-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        margin-bottom: 10px;
     }
 
-    .course-completion-status {
-        font-size: 0.8rem;
+    .course-description {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
     }
 
-    .completion-bar-wrapper {
-        height: 15px;
+    .course-header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .header-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .modules-list {
+        padding: 20px;
+    }
+
+    .module-card {
+        padding: 20px;
+    }
+
+    .module-title {
+        font-size: 1.6rem;
+    }
+
+    .lesson-view-panel {
+        padding: 20px;
+    }
+
+    .lesson-view-panel h2.lesson-current-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .lesson-content-area {
+        font-size: 0.95rem;
     }
 
     .module-navigation {
-        flex-direction: column; /* Stack buttons */
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     .module-navigation .nav-button {
-        width: 100%; /* Full width buttons */
-        max-width: 250px;
+        flex-grow: unset;
+        width: calc(50% - 5px); /* Dwa przyciski w rzędzie */
+        padding: 8px 15px;
+        font-size: 0.9rem;
     }
+}
 
-    .module-card h3 {
-        font-size: 1.4rem;
+@media (max-width: 480px) {
+    .modules-list {
+        padding: 15px;
     }
+    .module-card {
+        padding: 15px;
+    }
+    .lesson-view-panel {
+        padding: 15px;
+    }
+    .lesson-view-panel h2.lesson-current-title {
+        font-size: 1.8rem;
+    }
+    .module-navigation .nav-button {
+        width: 100%; /* Jeden przycisk w rzędzie na bardzo małych ekranach */
+    }
+}
 
-    .module-card p {
-        font-size: 0.8rem;
-    }
+.btn{
+    font-size: 1rem;
+    color: #ccc;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    background-color: #0044ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-    .no-courses-message {
-        padding: 20px;
-        font-size: 1rem;
-    }
+.btn:hover{
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding: 1.5rem 2rem;
 }

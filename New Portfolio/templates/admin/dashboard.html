@@ -1,0 +1,43 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Panel Administratora{% endblock %}
+
+{% block content %}
+    <div class="dashboard-grid">
+        <div class="dashboard-card stat-card users-card">
+            <i class="ri-user-line"></i>
+            <h3>Użytkownicy</h3>
+            <p>{{ total_users }}</p>
+            <a href="{{ url_for('admin_users') }}" class="btn-small">Zarządzaj</a>
+        </div>
+        <div class="dashboard-card stat-card courses-card">
+            <i class="ri-book-line"></i>
+            <h3>Kursy</h3>
+            <p>{{ total_courses }}</p>
+            <a href="{{ url_for('admin_courses') }}" class="btn-small">Zarządzaj</a>
+        </div>
+        <div class="dashboard-card stat-card lessons-card">
+            <i class="ri-file-text-line"></i>
+            <h3>Lekcje</h3>
+            <p>{{ total_lessons }}</p>
+            <a href="{{ url_for('admin_lessons') }}" class="btn-small">Zarządzaj</a>
+        </div>
+    </div>
+
+    <div class="dashboard-info-section">
+        <div class="admin-card">
+            <h3>Ostatnie aktywności</h3>
+            <p>Brak ostatniej aktywności.</p>
+        </div>
+        <div class="admin-card">
+            <h3>Szybkie linki</h3>
+            <ul>
+                <li><a href="{{ url_for('admin_add_user') }}">Dodaj nowego użytkownika</a></li>
+                <li><a href="{{ url_for('admin_add_course') }}">Dodaj nowy kurs</a></li>
+                <li><a href="{{ url_for('admin_add_module') }}">Dodaj nowy moduł</a></li>
+                <li><a href="{{ url_for('admin_add_lesson') }}">Dodaj nową lekcję</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

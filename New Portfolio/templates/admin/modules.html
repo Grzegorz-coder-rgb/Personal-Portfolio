@@ -1,0 +1,44 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Moduły{% endblock %}
+{% block page_title %}Zarządzanie Modułami{% endblock %}
+
+{% block content %}
+    <div class="admin-actions-bar">
+        <a href="{{ url_for('admin_add_module') }}" class="btn-primary"><i class="ri-add-line"></i> Dodaj Moduł</a>
+    </div>
+
+    <div class="admin-table-container admin-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tytuł Modułu</th>
+                    <th>Kurs</th>
+                    <th>Kolejność</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for module in modules %}
+                <tr>
+                    <td>{{ module.id }}</td>
+                    <td>{{ module.title }}</td>
+                    <td>{{ module.course.name if module.course else 'Brak' }}</td>
+                    <td>{{ module.order }}</td>
+                    <td class="table-actions">
+                        <a href="{{ url_for('admin_edit_module', module_id=module.id) }}" class="btn-action edit"><i class="ri-edit-line"></i> Edytuj</a>
+                        <form action="{{ url_for('admin_delete_module', module_id=module.id) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten moduł?');" style="display:inline;">
+                            <button type="submit" class="btn-action delete"><i class="ri-delete-bin-line"></i> Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">Brak modułów.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

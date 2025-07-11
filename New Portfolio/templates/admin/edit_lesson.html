@@ -1,0 +1,65 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Edytuj Lekcję{% endblock %}
+{% block page_title %}Edytuj Lekcję: {{ lesson.name }}{% endblock %}
+
+{% block content %}
+    <div class="admin-form-container admin-card">
+        <form method="POST" action="{{ url_for('admin_edit_lesson', lesson_id=lesson.id) }}">
+            <div class="form-group">
+                <label for="name">Nazwa Lekcji:</label>
+                <input type="text" id="name" name="name" value="{{ lesson.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="module_id">Wybierz Moduł:</label>
+                <select id="module_id" name="module_id" required>
+                    {% for module in modules %}
+                        <option value="{{ module.id }}" {% if lesson.module_id == module.id %}selected{% endif %}>{{ module.course.name }} &raquo; {{ module.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="order">Kolejność (numer):</label>
+                <input type="number" id="order" name="order" value="{{ lesson.order }}" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Treść Lekcji:</label>
+                <input type="hidden" name="content">
+                <div id="editor"></div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Zapisz Zmiany</button>
+                <a href="{{ url_for('admin_lessons') }}" class="btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: 'Wprowadź treść lekcji...',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'align': [] }],
+                ['link', 'image'],
+                ['clean']
+            ]
+        }
+    });
+
+    // Ustawienie początkowej treści dla edycji
+    quill.root.innerHTML = `{{ lesson.content | safe }}`;
+
+    var form = document.querySelector('form');
+    form.onsubmit = function() {
+        var contentInput = document.querySelector('input[name=content]');
+        contentInput.value = quill.root.innerHTML;
+    };
+</script>
+{% endblock %}

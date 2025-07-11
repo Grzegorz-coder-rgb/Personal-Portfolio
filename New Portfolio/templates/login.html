@@ -3,35 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logowanie - GregAcademy</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <title>Logowanie do GregAcademy</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Proste style dla strony logowania */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--color-background-dark); /* Użyj zmiennej z globalnego CSS */
+            color: var(--color-white);
+            font-family: 'Poppins', sans-serif; /* Użyj tej samej czcionki */
+        }
+
+        .login-container {
+            background-color: rgba(28, 31, 43, 0.7); /* Glass card effect */
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            padding: 40px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-container h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--color-primary);
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--color-white);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border-color: var(--color-primary);
+        }
+
+        .login-container .btn {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .login-container .btn:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .login-container p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .login-container p a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .login-container p a:hover {
+            color: var(--color-secondary-dark);
+        }
+
+        .flash-messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .flash-messages li {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .flash-messages .success {
+            background-color: #4CAF5033; /* Green with transparency */
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+
+        .flash-messages .error {
+            background-color: #F4433633; /* Red with transparency */
+            color: #F44336;
+            border: 1px solid #F44336;
+        }
+
+        .flash-messages .warning {
+            background-color: #FFC10733; /* Amber with transparency */
+            color: #FFC107;
+            border: 1px solid #FFC107;
+        }
+        .btn{
+            margin-top: 1.3rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="auth-container">
-        <div class="auth-card glass-card">
-            <h2>Logowanie</h2>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <ul class="flashes">
-                        {% for category, message in messages %}
-                            <li class="{{ category }}">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-            <form method="POST" action="{{ url_for('login') }}">
-                <div class="form-group">
-                    <label for="username"><i class="ri-user-line"></i> Nazwa użytkownika</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password"><i class="ri-lock-line"></i> Hasło</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn auth-btn">Zaloguj się</button>
-            </form>
-            </div>
+    <div class="login-container">
+        <h2>Zaloguj się</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <input type="text" name="username" placeholder="Nazwa użytkownika" required>
+            <input type="password" name="password" placeholder="Hasło" required>
+            <button type="submit" class="btn">Zaloguj</button>
+        </form>
+        <button class ="btn" onclick="window.location.href='{{ url_for('index') }}';"> Wróć do strony głównej</button>
     </div>
 </body>
 </html>

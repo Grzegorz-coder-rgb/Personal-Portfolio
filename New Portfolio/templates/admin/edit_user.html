@@ -1,0 +1,38 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Edytuj Użytkownika{% endblock %}
+{% block page_title %}Edytuj Użytkownika: {{ user.username }}{% endblock %}
+
+{% block content %}
+    <div class="admin-form-container admin-card">
+        <form method="POST" action="{{ url_for('admin_edit_user', user_id=user.id) }}">
+            <div class="form-group">
+                <label for="username">Nazwa Użytkownika:</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Nowe Hasło (pozostaw puste, aby nie zmieniać):</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="role">Rola:</label>
+                <select id="role" name="role">
+                    <option value="user" {% if user.role == 'user' %}selected{% endif %}>Użytkownik</option>
+                    <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Administrator</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lessons_balance">Saldo Lekcji:</label>
+                <input type="number" id="lessons_balance" name="lessons_balance" value="{{ user.lessons_balance }}" min="0">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Zapisz Zmiany</button>
+                <a href="{{ url_for('admin_users') }}" class="btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Dodaj Użytkownika{% endblock %}
+{% block page_title %}Dodaj Nowego Użytkownika{% endblock %}
+
+{% block content %}
+    <div class="admin-form-container admin-card">
+        <form method="POST" action="{{ url_for('admin_add_user') }}">
+            <div class="form-group">
+                <label for="username">Nazwa Użytkownika:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Rola:</label>
+                <select id="role" name="role">
+                    <option value="user">Użytkownik</option>
+                    <option value="admin">Administrator</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lessons_balance">Saldo Lekcji:</label>
+                <input type="number" id="lessons_balance" name="lessons_balance" value="0" min="0">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Dodaj Użytkownika</button>
+                <a href="{{ url_for('admin_users') }}" class="btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Kursy{% endblock %}
+{% block page_title %}Zarządzanie Kursami{% endblock %}
+
+{% block content %}
+    <div class="admin-actions-bar">
+        <a href="{{ url_for('admin_add_course') }}" class="btn-primary"><i class="ri-add-line"></i> Dodaj Kurs</a>
+    </div>
+
+    <div class="admin-table-container admin-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa Kursu</th>
+                    <th>Opis</th>
+                    <th>Klasa Gradientu</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.id }}</td>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.description | truncate(50) }}</td> {# Skróć opis do 50 znaków #}
+                    <td><span class="badge course-class">{{ course.gradient_class }}</span></td>
+                    <td class="table-actions">
+                        <a href="{{ url_for('admin_edit_course', course_id=course.id) }}" class="btn-action edit"><i class="ri-edit-line"></i> Edytuj</a>
+                        <form action="{{ url_for('admin_delete_course', course_id=course.id) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten kurs? Spowoduje to usunięcie wszystkich powiązanych modułów i lekcji!');" style="display:inline;">
+                            <button type="submit" class="btn-action delete"><i class="ri-delete-bin-line"></i> Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">Brak kursów.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
